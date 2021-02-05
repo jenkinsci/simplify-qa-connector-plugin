@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Group-Id: io.jenkins.plugins
+Short-Name: simplify-qa-connector
+Long-Name: TODO Plugin
+Url: https://github.com/jenkinsci/simplify-qa-connector-plugin
+Minimum-Java-Version: 1.8
+Plugin-Version: 1.0-SNAPSHOT (private-02/05/2021 19:01-Srinivas)
+Hudson-Version: 2.235.1
+Jenkins-Version: 2.235.1
+Plugin-Developers: 
+Support-Dynamic-Loading: true
+Plugin-License-Name: MIT License
+Plugin-License-Url: https://opensource.org/licenses/MIT
+Plugin-ScmUrl: https://github.com/jenkinsci/simplify-qa-connector-plugin
+Libraries: D:\simplify-qa-connector\src\main\resources,D:\simplify-qa-
+ connector\target\classes
+Resource-Path: D:\simplify-qa-connector\src\main\webapp
+
