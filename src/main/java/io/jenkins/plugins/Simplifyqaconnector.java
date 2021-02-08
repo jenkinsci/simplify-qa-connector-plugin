@@ -23,24 +23,28 @@ import hudson.model.TaskListener;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
 import hudson.util.FormValidation;
+import hudson.util.Secret;
 import jenkins.tasks.SimpleBuildStep;
+import sun.util.logging.resources.logging;
 
 public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 
 	private String api;
-	private String authorization;
-	private String token;
+//	private String authorization;
+	private Secret authorization;
+//	private String token;
+	private Secret token;
 
 	public String getApi() {
 		return api;
 	}
 
-	public String getToken() {
+	public Secret getToken() {
 		return token;
 	}
 
 	@DataBoundConstructor
-	public Simplifyqaconnector(String api, String token) {
+	public Simplifyqaconnector(String api, Secret token) {
 		this.api = api;
 		this.token = token;
 	}
@@ -57,8 +61,9 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 		postConnection.setRequestProperty("Content-Type", "application/json");
 		postConnection.setDoOutput(true);
 		OutputStream os = postConnection.getOutputStream();
-		token = "\"" + token + "\"";
-		String postParams = "{\"token\":" + token + "}";
+		String tok = "\"" + token + "\"";
+//		listener.getLogger().println("{\"token\":" + Secret.fromString(tok) + "}");
+		String postParams = "{\"token\":" + Secret.fromString(tok) + "}";
 		os.write(postParams.getBytes(Charset.defaultCharset()));
 		os.flush();
 		os.close();
@@ -80,7 +85,8 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 			ss = ss[1].split(",\"");
 			executionId = Integer.parseInt(ss[0].replaceAll("[^0-9]", ""));
 			String s[] = response.toString().split("\\\"authKey\\\":\\\"");
-			authorization = s[1].replace("\"", "").replace("}", "");
+			String p = s[1].replace("\"", "").replace("}", "");
+			authorization = Secret.fromString(p);
 			Thread.sleep(15000);
 			HttpURLConnection postConnectionn = testcaseStart(listener);
 			response(postConnectionn);
@@ -103,7 +109,7 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 			HttpURLConnection postConnectionn = (HttpURLConnection) objj.openConnection();
 			postConnectionn.setRequestMethod("POST");
 			postConnectionn.setRequestProperty("Content-Type", "application/json");
-			postConnectionn.setRequestProperty("authorization", authorization);
+			postConnectionn.setRequestProperty("authorization", authorization.getPlainText());
 			postConnectionn.setDoOutput(true);
 			OutputStream oss = postConnectionn.getOutputStream();
 			String postParam = "{\"executionId\":" + executionId + "}";
@@ -171,7 +177,7 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 		}
 	}
 
-	@Symbol("greet")
+	@Symbol("SimplifyQA")
 	@Extension
 	public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
 
