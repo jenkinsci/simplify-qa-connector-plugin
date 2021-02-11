@@ -49,8 +49,7 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 		this.token = token;
 	}
 
-	private static int responseCodes;
-	private static int executionId;
+	private int executionId;
 
 	@Override
 	public void perform(Run<?, ?> run, FilePath workspace, Launcher launcher, TaskListener listener)
@@ -68,17 +67,16 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 		os.flush();
 		os.close();
 		int responseCode = postConnection.getResponseCode();
-		responseCodes = responseCode;
-		if (responseCodes == 200) {
+
+		if (responseCode == 200) {
 			listener.getLogger().println("Suite Execution Started");
 			listener.getLogger().println("\n");
-			BufferedReader in = new BufferedReader(new InputStreamReader(postConnection.getInputStream()));
+			BufferedReader in = new BufferedReader(
+					new InputStreamReader(postConnection.getInputStream(), Charset.forName("UTF-8")));
 			String inputLine;
 			StringBuffer response = new StringBuffer();
-			StringBuilder r = new StringBuilder();
 			while ((inputLine = in.readLine()) != null) {
 				response.append(inputLine);
-				r.append(inputLine);
 			}
 			in.close();
 			String[] ss = response.toString().split("\"executionId\\\":");
@@ -141,15 +139,13 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 
 	public String response(HttpURLConnection postConnectionn) throws IOException {
 		responsee = new StringBuffer();
-		inn = new BufferedReader(new InputStreamReader(postConnectionn.getInputStream()));
+		inn = new BufferedReader(new InputStreamReader(postConnectionn.getInputStream(), Charset.forName("UTF-8")));
 		String inputLinee;
 		while ((inputLinee = inn.readLine()) != null) {
 			responsee.append(inputLinee);
 		}
 		return responsee.toString();
 	}
-
-	int j = 0;
 
 	public void testCaseinfo(HttpURLConnection postConnectionn, TaskListener listener)
 			throws IOException, InterruptedException {
