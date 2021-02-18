@@ -10,10 +10,10 @@
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>simplify-qa-connector</artifactId>
     
-    <version>1.0</version>
+    <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
-        <revision>1.0</revision>
+        <revision>1.1</revision>
         <changelist>-SNAPSHOT</changelist>
         <jenkins.version>2.235.1</jenkins.version>
         <java.level>8</java.level>
@@ -47,7 +47,7 @@
         <connection>scm:git:git://github.com/${gitHubRepo}.git</connection>
         <developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
         <url>https://github.com/${gitHubRepo}</url>
-        <tag>HEAD</tag>
+        <tag>simplifyqa-connector release</tag>
     </scm>
 
     <repositories>
