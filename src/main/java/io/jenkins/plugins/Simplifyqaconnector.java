@@ -60,14 +60,12 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 		postConnection.setRequestProperty("Content-Type", "application/json");
 		postConnection.setDoOutput(true);
 		OutputStream os = postConnection.getOutputStream();
-//		String tok = "\"" + token + "\"";
-//		listener.getLogger().println("{\"token\":" + Secret.fromString(tok) + "}");
-		String postParams = "{\"token\":" + Secret.toString(token) + "}";
+
+		String postParams = "{\"token\":" + "\"" + token + "\"" + "}";
 		os.write(postParams.getBytes(Charset.defaultCharset()));
 		os.flush();
 		os.close();
 		int responseCode = postConnection.getResponseCode();
-//		tok = tok.replace("\"", "");
 		if (responseCode == 200) {
 			listener.getLogger().println("Suite Execution Started");
 			listener.getLogger().println("\n");
