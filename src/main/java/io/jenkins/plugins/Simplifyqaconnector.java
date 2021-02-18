@@ -190,7 +190,7 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 
 		@Override
 		public String getDisplayName() {
-			return "SimplifyQA Suite Automation";
+			return "Simplify Suite Automation";
 		}
 
 	}
