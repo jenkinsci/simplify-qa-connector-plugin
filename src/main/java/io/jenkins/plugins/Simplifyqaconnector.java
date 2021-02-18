@@ -18,6 +18,7 @@ import hudson.Extension;
 import hudson.FilePath;
 import hudson.Launcher;
 import hudson.model.AbstractProject;
+import hudson.model.Result;
 import hudson.model.Run;
 import hudson.model.TaskListener;
 import hudson.tasks.BuildStepDescriptor;
@@ -60,14 +61,11 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 		postConnection.setRequestProperty("Content-Type", "application/json");
 		postConnection.setDoOutput(true);
 		OutputStream os = postConnection.getOutputStream();
-		String tok = "\"" + token + "\"";
-//		listener.getLogger().println("{\"token\":" + Secret.fromString(tok) + "}");
-		String postParams = "{\"token\":" + Secret.fromString(tok) + "}";
+		String postParams = "{\"token\":" + "\"" + token + "\"" + "}";
 		os.write(postParams.getBytes(Charset.defaultCharset()));
 		os.flush();
 		os.close();
 		int responseCode = postConnection.getResponseCode();
-
 		if (responseCode == 200) {
 			listener.getLogger().println("Suite Execution Started");
 			listener.getLogger().println("\n");
@@ -88,10 +86,11 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 			Thread.sleep(15000);
 			HttpURLConnection postConnectionn = testcaseStart(listener);
 			response(postConnectionn);
-			testCaseinfo(postConnectionn, listener);
+			testCaseinfo(run, postConnectionn, listener);
 //			listener.getLogger().println("http://139.162.18.16:4104/user/reports/84/69882");
 			listener.getLogger().println("Suite Execution Finished");
 		} else {
+			run.setResult(Result.FAILURE);
 			listener.error("System Not Reachable");
 		}
 	}
@@ -147,7 +146,7 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 		return responsee.toString();
 	}
 
-	public void testCaseinfo(HttpURLConnection postConnectionn, TaskListener listener)
+	public void testCaseinfo(Run<?, ?> run, HttpURLConnection postConnectionn, TaskListener listener)
 			throws IOException, InterruptedException {
 		int responseCode = postConnectionn.getResponseCode();
 		String lasttest = null;
@@ -164,6 +163,9 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 					listener.getLogger().println("\n");
 				}
 				lasttest = s.toString();
+				if (lasttest.contains("Failed")) {
+					run.setResult(Result.FAILURE);
+				}
 				if (lasttest.contains("COMPLETED")) {
 					break;
 				}

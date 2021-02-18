@@ -9,6 +9,7 @@
     </parent>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>simplify-qa-connector</artifactId>
+    
     <version>1.0-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <properties>
