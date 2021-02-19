@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<l:dependencies xmlns:l='licenses' groupId='io.jenkins.plugins' artifactId='simplify-qa-connector' version='1.0.3'><l:dependency name='SimplifyQA Connector' groupId='io.jenkins.plugins' artifactId='simplify-qa-connector' version='1.0.3' url='https://github.com/jenkinsci/simplify-qa-connector-plugin'><l:description>SimplifyQA Jenkins Connector is a Plugin to trigger automation of suites in SimplifyQA after build.</l:description><l:license name='MIT License' url='https://opensource.org/licenses/MIT'/></l:dependency></l:dependencies>

@@ -1,0 +1,7 @@
+META-INF\annotations\org.jenkinsci.Symbol
+io\jenkins\plugins\Simplifyqaconnector.stapler
+META-INF\annotations\hudson.Extension.txt
+io\jenkins\plugins\Simplifyqaconnector\DescriptorImpl\doCheckName.stapler
+io\jenkins\plugins\Simplifyqaconnector.class
+META-INF\annotations\hudson.Extension
+io\jenkins\plugins\Simplifyqaconnector$DescriptorImpl.class
