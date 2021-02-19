@@ -26,7 +26,6 @@ import hudson.tasks.Builder;
 import hudson.util.FormValidation;
 import hudson.util.Secret;
 import jenkins.tasks.SimpleBuildStep;
-import sun.util.logging.resources.logging;
 
 public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 
