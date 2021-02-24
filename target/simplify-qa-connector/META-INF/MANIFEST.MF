@@ -6,13 +6,13 @@ Extension-Name: simplify-qa-connector
 Specification-Title: SimplifyQA Jenkins Connector is a Plugin to trigg
  er automation of suites in SimplifyQA after build.
 Implementation-Title: simplify-qa-connector
-Implementation-Version: 1.0.4
+Implementation-Version: 1.0.5
 Group-Id: io.jenkins.plugins
 Short-Name: simplify-qa-connector
 Long-Name: SimplifyQA Connector
 Url: https://github.com/jenkinsci/simplify-qa-connector-plugin
 Minimum-Java-Version: 1.8
-Plugin-Version: 1.0.4
+Plugin-Version: 1.0.5
 Hudson-Version: 2.235.1
 Jenkins-Version: 2.235.1
 Plugin-Developers: 

@@ -6,7 +6,7 @@ import java.util.*;
  */
 public class InjectedTest extends junit.framework.TestCase {
   public static junit.framework.Test suite() throws Exception {
-    System.out.println("Running tests for "+"io.jenkins.plugins:simplify-qa-connector:1.0.4");
+    System.out.println("Running tests for "+"io.jenkins.plugins:simplify-qa-connector:1.0.5");
     Map<String, Object> parameters = new HashMap<String, Object>();
     parameters.put("basedir","D:\\Test\\simplify-qa-connector-plugin");
     parameters.put("artifactId","simplify-qa-connector");

@@ -84,10 +84,9 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 			authorization = Secret.fromString(p);
 			Thread.sleep(15000);
 			HttpURLConnection postConnectionn = testcaseStart(listener);
-			if (!response(postConnectionn, listener, run).equals(null)) {
-				testCaseinfo(run, postConnectionn, listener);
-				listener.getLogger().println("Suite Execution Finished");
-			}
+			response(postConnectionn, listener, run);
+			testCaseinfo(run, postConnectionn, listener);
+			listener.getLogger().println("Suite Execution Finished");
 		} else {
 			run.setResult(Result.FAILURE);
 			listener.error("System Not Reachable");
