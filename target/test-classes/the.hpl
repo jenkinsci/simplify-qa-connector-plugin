@@ -4,7 +4,7 @@ Short-Name: simplify-qa-connector
 Long-Name: SimplifyQA Connector
 Url: https://github.com/jenkinsci/simplify-qa-connector-plugin
 Minimum-Java-Version: 1.8
-Plugin-Version: 1.0.3
+Plugin-Version: 1.0.4
 Hudson-Version: 2.235.1
 Jenkins-Version: 2.235.1
 Plugin-Developers: 

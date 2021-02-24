@@ -1,0 +1,11 @@
+Started by user unknown or anonymous
+Running as SYSTEM
+Building in workspace D:\Test\simplify-qa-connector-plugin\work\workspace\sdfgfdf
+Suite Execution Started
+
+
+{"success":true,"data":{"success":true,"data":{"execution":"COMPLETED","result":[{"tcId":15209,"tcSeq":1,"tcIdSeq":"15209-1","tcVersion":"1","tcCode":"TC-335615209","result":"Inprogress","resultItr":[{"itr":1,"resultTc":"Inprogress"}]}],"reporturl":"https://simplifyqa.app/user/reports/9/205749"}}}
+
+
+Suite Execution Finished
+Finished: SUCCESS

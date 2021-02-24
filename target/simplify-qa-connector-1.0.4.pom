@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.jenkins.plugins</groupId>
   <artifactId>simplify-qa-connector</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <packaging>hpi</packaging>
   <name>SimplifyQA Connector</name>
   <description>SimplifyQA Jenkins Connector is a Plugin to trigger automation of suites in SimplifyQA after build.</description>
@@ -19,7 +19,7 @@
   <scm>
     <connection>scm:git:git://github.com/jenkinsci/simplify-qa-connector-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/simplify-qa-connector-plugin.git</developerConnection>
-    <tag>simplifyqaconnector-1.0.3-release</tag>
+    <tag>simplifyqaconnector-1.0.4-release</tag>
     <url>https://github.com/jenkinsci/simplify-qa-connector-plugin</url>
   </scm>
   <distributionManagement>

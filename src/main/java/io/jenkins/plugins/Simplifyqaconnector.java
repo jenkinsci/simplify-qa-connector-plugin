@@ -84,10 +84,10 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 			authorization = Secret.fromString(p);
 			Thread.sleep(15000);
 			HttpURLConnection postConnectionn = testcaseStart(listener);
-			response(postConnectionn);
-			testCaseinfo(run, postConnectionn, listener);
-//			listener.getLogger().println("http://139.162.18.16:4104/user/reports/84/69882");
-			listener.getLogger().println("Suite Execution Finished");
+			if (!response(postConnectionn, listener, run).equals(null)) {
+				testCaseinfo(run, postConnectionn, listener);
+				listener.getLogger().println("Suite Execution Finished");
+			}
 		} else {
 			run.setResult(Result.FAILURE);
 			listener.error("System Not Reachable");
@@ -135,14 +135,20 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 
 	BufferedReader inn;
 
-	public String response(HttpURLConnection postConnectionn) throws IOException {
+	public String response(HttpURLConnection postConnectionn, TaskListener listener, Run<?, ?> run) throws IOException {
 		responsee = new StringBuffer();
-		inn = new BufferedReader(new InputStreamReader(postConnectionn.getInputStream(), Charset.forName("UTF-8")));
-		String inputLinee;
-		while ((inputLinee = inn.readLine()) != null) {
-			responsee.append(inputLinee);
+		try {
+			inn = new BufferedReader(new InputStreamReader(postConnectionn.getInputStream(), Charset.forName("UTF-8")));
+			String inputLinee;
+			while ((inputLinee = inn.readLine()) != null) {
+				responsee.append(inputLinee);
+			}
+			return responsee.toString();
+		} catch (Exception e) {
+			listener.getLogger().println("Request Timeout Error");
+			run.setResult(Result.FAILURE);
+			return null;
 		}
-		return responsee.toString();
 	}
 
 	public void testCaseinfo(Run<?, ?> run, HttpURLConnection postConnectionn, TaskListener listener)
