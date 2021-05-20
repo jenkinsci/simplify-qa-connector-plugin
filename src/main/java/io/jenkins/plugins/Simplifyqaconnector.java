@@ -85,7 +85,7 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 			authorization = Secret.fromString(p);
 			Thread.sleep(15000);
 			HttpURLConnection postConnectionn = testcaseStart(listener);
-			response(postConnectionn);
+			response(postConnectionn, listener, run);
 			testCaseinfo(run, postConnectionn, listener);
 //			listener.getLogger().println("http://139.162.18.16:4104/user/reports/84/69882");
 			listener.getLogger().println("Suite Execution Finished");
@@ -135,15 +135,30 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 	}
 
 	BufferedReader inn;
+	int recall = 0;
 
-	public String response(HttpURLConnection postConnectionn) throws IOException {
+	public void response(HttpURLConnection postConnectionn, TaskListener listener, Run<?, ?> run)
+			throws IOException, InterruptedException {
 		responsee = new StringBuffer();
-		inn = new BufferedReader(new InputStreamReader(postConnectionn.getInputStream(), Charset.forName("UTF-8")));
-		String inputLinee;
-		while ((inputLinee = inn.readLine()) != null) {
-			responsee.append(inputLinee);
+
+		if (postConnectionn.getResponseCode() == 500) {
+			Thread.sleep(10000);
+			if (recall <= 10) {
+				recall++;
+				postConnectionn = testcaseStart(listener);
+				response(postConnectionn, listener, run);
+			} else {
+				run.setResult(Result.FAILURE);
+				listener.error("Could not read the Execution status");
+			}
+		} else {
+			inn = new BufferedReader(new InputStreamReader(postConnectionn.getInputStream(), Charset.forName("UTF-8")));
+			String inputLinee;
+			while ((inputLinee = inn.readLine()) != null) {
+				responsee.append(inputLinee);
+			}
+//			return responsee.toString();
 		}
-		return responsee.toString();
 	}
 
 	public void testCaseinfo(Run<?, ?> run, HttpURLConnection postConnectionn, TaskListener listener)
@@ -190,7 +205,7 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 
 		@Override
 		public String getDisplayName() {
-			return "SimplifyQA Suite Automation";
+			return "Simplify Suite Automation";
 		}
 
 	}
