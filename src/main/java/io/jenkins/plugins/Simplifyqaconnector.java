@@ -215,15 +215,7 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 		@Override
 		public String getDisplayName() {
 			return "Simplify Suite Automation";
-		}
-
-		public static void main(String[] args) {
-			String s ="{\"success\":true,\"executionId\":85374,\"authKey\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcklkIjozMzU2LCJjcmVhdGVkQnkiOjUyODQsInByb2plY3RJZCI6ODc0OCwiYXV0b21hdGlvbiI6dHJ1ZSwicmVsZWFzZUlkIjo1NjksIml0ZXJhdGlvbklkIjo2NjksImJyb3dzZXJOYW1lIjoiQ2hyb21lIiwiZGV2aWNlcyI6WyJDaHJvbWUiXSwic3RhdHVzIjoiSU5QUk9HUkVTUyIsInJlc3VsdERhdGEiOltdLCJsb2NhbGV4ZWN1dGlvbiI6dHJ1ZSwiZW52aXJvbm1lbnRUeXBlIjoiZ2VuZXJhbCIsInN1aXRlSWQiOjMzMjEsInN1aXRlQ29kZSI6IlNVLTMzNTYzMzIxIiwibWFpbGVyc0xpc3QiOls2MDg5XSwibmFtZSI6IlZvbHVudGVlciBzaWduIGZvcm0gaW4gc3VpdGUgbGV2ZWwiLCJwaXBlbGluZUlkIjoyNzksIm1hY2hpbmVJZCI6NzksInR5cGUiOiJleGVjdXRpb24iLCJpYXQiOjE2MjI1NjQ1MTYsImV4cCI6MTYyMjY1MDkxNn0.my5ihANV5dBbezxFgzcm5AMdjWAXqMl792HrJECPJE0\",\"projectId\":8748,\"customerId\":3356}";
-			String pid[] = s.toString().split("\\\"executionId\\\":\\\"");
-			pid = pid[1].split(",\"");
-			System.out.println(pid);
-		}
-		
+		}	
 		
 	}
 
