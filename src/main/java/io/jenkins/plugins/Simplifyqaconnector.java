@@ -50,6 +50,8 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 	}
 
 	private int executionId;
+	private int projectId;
+	private int customerId;
 
 	@Override
 	public void perform(Run<?, ?> run, FilePath workspace, Launcher launcher, TaskListener listener)
@@ -82,7 +84,14 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 			executionId = Integer.parseInt(ss[0].replaceAll("[^0-9]", ""));
 			String s[] = response.toString().split("\\\"authKey\\\":\\\"");
 			String p = s[1].replace("\"", "").replace("}", "");
-			authorization = Secret.fromString(p);
+			s=p.split(",");
+			authorization = Secret.fromString(s[0]);			
+			String[] pid = response.toString().split("\"projectId\\\":");
+			pid = pid[1].split(",\"");
+			projectId = Integer.parseInt(pid[0].replaceAll("[^0-9]", ""));
+			String cid[] = response.toString().split("\"customerId\\\":");
+			cid = cid[1].split(",\"");
+			customerId = Integer.parseInt(cid[0].replaceAll("[^0-9]", ""));
 			Thread.sleep(15000);
 			HttpURLConnection postConnectionn = testcaseStart(listener);
 			response(postConnectionn, listener, run);
@@ -109,7 +118,7 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 			postConnectionn.setRequestProperty("authorization", authorization.getPlainText());
 			postConnectionn.setDoOutput(true);
 			OutputStream oss = postConnectionn.getOutputStream();
-			String postParam = "{\"executionId\":" + executionId + "}";
+			String postParam = "{\"executionId\":" + executionId +","+"\"projectId\":"+projectId+","+"\"customerId\":"+customerId+ "}";
 			oss.write(postParam.getBytes(Charset.defaultCharset()));
 			oss.flush();
 			oss.close();
@@ -208,6 +217,14 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 			return "Simplify Suite Automation";
 		}
 
+		public static void main(String[] args) {
+			String s ="{\"success\":true,\"executionId\":85374,\"authKey\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcklkIjozMzU2LCJjcmVhdGVkQnkiOjUyODQsInByb2plY3RJZCI6ODc0OCwiYXV0b21hdGlvbiI6dHJ1ZSwicmVsZWFzZUlkIjo1NjksIml0ZXJhdGlvbklkIjo2NjksImJyb3dzZXJOYW1lIjoiQ2hyb21lIiwiZGV2aWNlcyI6WyJDaHJvbWUiXSwic3RhdHVzIjoiSU5QUk9HUkVTUyIsInJlc3VsdERhdGEiOltdLCJsb2NhbGV4ZWN1dGlvbiI6dHJ1ZSwiZW52aXJvbm1lbnRUeXBlIjoiZ2VuZXJhbCIsInN1aXRlSWQiOjMzMjEsInN1aXRlQ29kZSI6IlNVLTMzNTYzMzIxIiwibWFpbGVyc0xpc3QiOls2MDg5XSwibmFtZSI6IlZvbHVudGVlciBzaWduIGZvcm0gaW4gc3VpdGUgbGV2ZWwiLCJwaXBlbGluZUlkIjoyNzksIm1hY2hpbmVJZCI6NzksInR5cGUiOiJleGVjdXRpb24iLCJpYXQiOjE2MjI1NjQ1MTYsImV4cCI6MTYyMjY1MDkxNn0.my5ihANV5dBbezxFgzcm5AMdjWAXqMl792HrJECPJE0\",\"projectId\":8748,\"customerId\":3356}";
+			String pid[] = s.toString().split("\\\"executionId\\\":\\\"");
+			pid = pid[1].split(",\"");
+			System.out.println(pid);
+		}
+		
+		
 	}
 
 }
