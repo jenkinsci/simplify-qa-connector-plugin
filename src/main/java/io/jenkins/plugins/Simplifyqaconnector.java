@@ -34,6 +34,10 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 	private Secret authorization;
 //	private String token;
 	private Secret token;
+	
+	private int projectId;
+	
+	private int customerId;
 
 	public String getApi() {
 		return api;
@@ -76,13 +80,16 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 				response.append(inputLine);
 			}
 			in.close();
-			String[] ss = response.toString().split("\"executionId\\\":");
-			ss = ss[1].split(",\"");
-			executionId = Integer.parseInt(ss[0].replaceAll("[^0-9]", ""));
-			String s[] = response.toString().split("\\\"authKey\\\":\\\"");
-			String p = s[1].replace("\"", "").replace("}", "");
-			authorization = Secret.fromString(p);
-			Thread.sleep(15000);
+			String[] responsearray = response.toString().split(",");
+			String[] splittedresarray = responsearray[1].split(":");
+			executionId = Integer.parseInt(splittedresarray[1]);
+			splittedresarray = responsearray[2].split(":");
+			authorization = Secret.fromString(splittedresarray[1].replaceAll("\"", "").toString());
+			splittedresarray = responsearray[3].split(":");
+			projectId = Integer.parseInt(splittedresarray[1]);
+			splittedresarray = responsearray[4].split(":");
+			customerId = Integer.parseInt(splittedresarray[1].replaceAll("}", ""));
+			Thread.sleep(20000);
 			HttpURLConnection postConnectionn = testcaseStart(listener);
 			response(postConnectionn, listener, run);
 			testCaseinfo(run, postConnectionn, listener);
@@ -104,10 +111,10 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 			HttpURLConnection postConnectionn = (HttpURLConnection) objj.openConnection();
 			postConnectionn.setRequestMethod("POST");
 			postConnectionn.setRequestProperty("Content-Type", "application/json");
-			postConnectionn.setRequestProperty("authorization", authorization.getPlainText());
+			postConnectionn.setRequestProperty("authorization", Secret.toString(authorization));
 			postConnectionn.setDoOutput(true);
 			OutputStream oss = postConnectionn.getOutputStream();
-			String postParam = "{\"executionId\":" + executionId + "}";
+			String postParam = "{\"executionId\":" + executionId +","+ "\"projectId\":" +projectId +","+ "\"customerId\":" + customerId + "}";
 			oss.write(postParam.getBytes(Charset.defaultCharset()));
 			oss.flush();
 			oss.close();
@@ -198,5 +205,5 @@ public class Simplifyqaconnector extends Builder implements SimpleBuildStep {
 		}
 
 	}
-
+	
 }
