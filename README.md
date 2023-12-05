@@ -1,14 +1,14 @@
 # SimplifyQA Pipeline Executor
 
-[![Build Status](https://ci.jenkins.io/job/Plugins/job/SQAPipelineExecutor-plugin/job/main/badge/icon)](https://ci.jenkins.io/job/Plugins/job/SQAPipelineExecutor-plugin/job/master/)
+[![Build Status](https://ci.jenkins.io/job/Plugins/job/simplify-qa-connector-plugin/job/master/badge/icon)](https://ci.jenkins.io/job/Plugins/job/simplify-qa-connector-plugin/job/master/)
 
-[![Contributors](https://img.shields.io/github/contributors/jenkinsci/SQAPipelineExecutor-plugin.svg)](https://github.com/jenkinsci/SQAPipelineExecutor-plugin/graphs/contributors)
+[![Contributors](https://img.shields.io/github/contributors/jenkinsci/simplify-qa-connector-plugin.svg)](https://github.com/jenkinsci/simplify-qa-connector-plugin/graphs/contributors)
 
-[![Jenkins Plugin](https://img.shields.io/jenkins/plugin/v/SQAPipelineExecutor.svg)](https://plugins.jenkins.io/SQAPipelineExecutor)
+[![Jenkins Plugin](https://img.shields.io/jenkins/plugin/v/simplify-qa-connector.svg)](https://plugins.jenkins.io/simplify-qa-connector)
 
-[![GitHub release](https://img.shields.io/github/release/jenkinsci/SQAPipelineExecutor-plugin.svg?label=changelog)](https://github.com/jenkinsci/SQAPipelineExecutor-plugin/releases/latest)
+[![GitHub release](https://img.shields.io/github/release/jenkinsci/simplify-qa-connector-plugin.svg?label=changelog)](https://github.com/jenkinsci/simplify-qa-connector-plugin/releases/latest)
 
-[![Jenkins Plugin Installs](https://img.shields.io/jenkins/plugin/i/SQAPipelineExecutor.svg?color=blue)](https://plugins.jenkins.io/SQAPipelineExecutor)
+[![Jenkins Plugin Installs](https://img.shields.io/jenkins/plugin/i/simplify-qa-connector.svg?color=blue)](https://plugins.jenkins.io/simplify-qa-connector)
 
 # SimplifyQA Pipeline Executor is an update to our existing Jenkins Plugin with improved features. It offers seamless integration with SimplifyQA tool and triggers automated script execution.
 
