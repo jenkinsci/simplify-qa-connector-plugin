@@ -6,13 +6,13 @@ import java.util.*;
  */
 public class InjectedTest extends junit.framework.TestCase {
   public static junit.framework.Test suite() throws Exception {
-    System.out.println("Running tests for "+"io.jenkins.plugins:simplify-qa-connector:1.0-SNAPSHOT");
+    System.out.println("Running tests for "+"io.jenkins.plugins:simplify-qa-connector:2.0-SNAPSHOT");
     Map<String, Object> parameters = new HashMap<String, Object>();
-    parameters.put("basedir","D:\\simplify-qa-connector");
+    parameters.put("basedir","C:\\Projects\\Maven Projects\\temp\\simplify-qa-connector-plugin");
     parameters.put("artifactId","simplify-qa-connector");
     parameters.put("packaging","hpi");
-    parameters.put("outputDirectory","D:\\simplify-qa-connector\\target\\classes");
-    parameters.put("testOutputDirectory","D:\\simplify-qa-connector\\target\\test-classes");
+    parameters.put("outputDirectory","C:\\Projects\\Maven Projects\\temp\\simplify-qa-connector-plugin\\target\\classes");
+    parameters.put("testOutputDirectory","C:\\Projects\\Maven Projects\\temp\\simplify-qa-connector-plugin\\target\\test-classes");
     parameters.put("requirePI","true");
     return org.jvnet.hudson.test.PluginAutomaticTestBuilder.build(parameters);
   }

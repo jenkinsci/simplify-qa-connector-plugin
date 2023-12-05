@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="maven-antrun-" default="main">
   <target name="main">
-    <mkdir dir="D:\simplify-qa-connector\target/tmp" />
+    <mkdir dir="C:\Projects\Maven Projects\temp\simplify-qa-connector-plugin\target/tmp" />
   </target>
 </project>

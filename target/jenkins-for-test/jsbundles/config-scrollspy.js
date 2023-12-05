@@ -1,1 +1,1411 @@
-!function(t){function i(i){for(var o,r,a=i[0],c=i[1],u=i[2],h=0,l=[];h<a.length;h++)r=a[h],Object.prototype.hasOwnProperty.call(n,r)&&n[r]&&l.push(n[r][0]),n[r]=0;for(o in c)Object.prototype.hasOwnProperty.call(c,o)&&(t[o]=c[o]);for(f&&f(i);l.length;)l.shift()();return s.push.apply(s,u||[]),e()}function e(){for(var t,i=0;i<s.length;i++){for(var e=s[i],o=!0,a=1;a<e.length;a++){var c=e[a];0!==n[c]&&(o=!1)}o&&(s.splice(i--,1),t=r(r.s=e[0]))}return t}var o={},n={3:0},s=[];function r(i){if(o[i])return o[i].exports;var e=o[i]={i:i,l:!1,exports:{}};return t[i].call(e.exports,e,e.exports,r),e.l=!0,e.exports}r.m=t,r.c=o,r.d=function(t,i,e){r.o(t,i)||Object.defineProperty(t,i,{enumerable:!0,get:e})},r.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},r.t=function(t,i){if(1&i&&(t=r(t)),8&i)return t;if(4&i&&"object"==typeof t&&t&&t.__esModule)return t;var e=Object.create(null);if(r.r(e),Object.defineProperty(e,"default",{enumerable:!0,value:t}),2&i&&"string"!=typeof t)for(var o in t)r.d(e,o,function(i){return t[i]}.bind(null,o));return e},r.n=function(t){var i=t&&t.__esModule?function(){return t.default}:function(){return t};return r.d(i,"a",i),i},r.o=function(t,i){return Object.prototype.hasOwnProperty.call(t,i)},r.p="";var a=window.webpackJsonp=window.webpackJsonp||[],c=a.push.bind(a);a.push=i,a=a.slice();for(var u=0;u<a.length;u++)i(a[u]);var f=c;s.push([46,0]),e()}({2:function(t,i,e){"use strict";var o=e(0),n=e.n(o),s=e(1),r="jenkins-loaded-"+(new Date).getTime();function a(t){return n()(t).height()}i.a={onload:function(t,i,e){function o(){setTimeout(s,50)}function s(){var s=n()(t,e).not(r);s.size()>0?(s.addClass(r),!0===i(s)&&o()):o()}s()},winScrollTop:function(){return n()(Object(s.getWindow)()).scrollTop()},onWinScroll:function(t){n()(Object(s.getWindow)()).on("scroll",t)},pageHeaderHeight:function(){return a("#page-head")},breadcrumbBarHeight:function(){return a("#breadcrumbBar")},fireBottomStickerAdjustEvent:function(){Event.fire(window,"jenkins:bottom-sticker-adjust")},fixDragEvent:function(t){var i=!1,e=n()(t),o=e.closest(".repeated-chunk");e.add("#ygddfdiv").mousedown((function(){i=!0})).mousemove((function(){i&&!o.hasClass("dragging")&&o.addClass("dragging")})).mouseup((function(){i=!1,o.removeClass("dragging")}))},removeTextHighlighting:function(t){n()("span.highlight-split",t).each((function(){var t=n()(this);t.before(t.text()),t.remove()}))}}},4:function(t,i,e){"use strict";var o=e(1),n=Object(o.getWindow)().localStorage;function s(){n={storage:{},setItem:function(t,i){this.storage[t]=i},getItem:function(t){return this.storage[t]},removeItem:function(t){delete this.storage[t]}}}void 0===n&&(console.warn("HTML5 localStorage not supported by this browser."),s());var r={setMock:s,setItem:function(t,i){n.setItem(t,i)},getItem:function(t,i){var e=n.getItem(t);return e||(e=i),e},removeItem:function(t){return n.removeItem(t)}};i.a={setGlobalItem:function(t,i){r.setItem("jenkins:"+t,i)},getGlobalItem:function(t,i){return r.getItem("jenkins:"+t,i)},setPageItem:function(t,i){t="jenkins:"+t+":"+Object(o.getWindow)().location.href,r.setItem(t,i)},getPageItem:function(t,i){return t="jenkins:"+t+":"+Object(o.getWindow)().location.href,r.getItem(t,i)}}},46:function(t,i,e){e(47),t.exports=e(48)},47:function(t,i,e){"use strict";e.r(i),e.d(i,"tabbars",(function(){return d})),e.d(i,"scrollspeed",(function(){return g})),e.d(i,"setScrollspeed",(function(){return v})),e.d(i,"on",(function(){return w}));var o=e(0),n=e.n(o),s=e(1),r=e.n(s),a=e(2),c=e(7),u=!1,f=!1,h=a.a.pageHeaderHeight(),l=a.a.breadcrumbBarHeight(),d=[],g=500;function v(t){g=t}var p=[],w=function(t){p.push(t)};function b(t){for(var i=0;i<p.length;i++)p[i](t)}function m(t){if(!0!==u)if(!0!==f){var i=a.a.winScrollTop(),e=t.sections;n.a.each(e,(function(t,e){if(e.isVisible()){var o=e.getViewportEntryOffset(),n=0,s=function(t){var i=t.getSibling(1);for(;i&&!i.isVisible();)i=i.getSibling(1);return i}(e);return s&&(n=s.getViewportEntryOffset()-o),i<o+.75*n?(e.markAsActive(),b({type:"manual_scrollto",section:e}),!1):void 0}}))}else f=!1}function y(t){var i=n()(r.a.getWindow()),e=a.a.winScrollTop(),o=t.configWidgets,s=t.configTable,c=t.configForm,u=function(){o.width(c.outerWidth()-2)};return e>h-5?(u(),o.css({position:"fixed",top:l-5+"px",margin:"0 auto !important"}),s.css({"margin-top":o.outerHeight()+"px"}),i.resize(u),!0):(o.removeAttr("style"),s.removeAttr("style"),i.unbind("resize",u),!1)}n()((function(){c.b(".config-table.scrollspy",(function(t){d.push(t),c.a(t),t.onShowSection((function(){!function(t,i){var e=t.headerRow.offset().top-(n()("#main-panel .jenkins-config-widgets").outerHeight()+15);u=!0,n()("html,body").animate({scrollTop:e},g,(function(){u&&(b({type:"click_scrollto",section:t}),u=!1,f=y(i))}))}(this,t),a.a.fireBottomStickerAdjustEvent()})),m(t),a.a.onWinScroll((function(){m(t)})),a.a.onWinScroll((function(){y(t)}))}),{trackSectionVisibility:!0})}))},48:function(t,i,e){},7:function(t,i,e){"use strict";var o,n=e(0),s=e.n(n),r=e(1),a=e.n(r),c=e(2),u=function(){return o||f(),o};function f(){(o=s.a).expr[":"].containsci=o.expr.createPseudo((function(t){return function(i){return-1!==o(i).text().toUpperCase().indexOf(t.toUpperCase())}}))}function h(t){return"config_"+(t=t.trim()).replace(/[\W_]+/g,"_").toLowerCase()}function l(t,i){this.startRow=t,this.parentRowGroupContainer=i,this.endRow=void 0,this.rows=[],this.rowGroups=[],this.toggleWidget=void 0,this.label=void 0}a.a.getWindow((function(){o=void 0})),f(),l.prototype.getRowCount=function(t){var i=this.rows.length;if(void 0===t||!0===t)for(var e=0;e<this.rowGroups.length;e++)i+=this.rowGroups[e].getRowCount();return i},l.prototype.getLabels=function(){var t=[];this.label&&t.push(this.label);for(var i=0;i<this.rowGroups.length;i++){var e=this.rowGroups[i];t.push(e.getLabels())}return t},l.prototype.updateVisibility=function(){if(void 0!==this.toggleWidget)for(var t=this.toggleWidget.is(":checked"),i=0;i<this.rows.length;i++)t?this.rows[i].show():this.rows[i].not(".help-area").hide();for(var e=0;e<this.rowGroups.length;e++){this.rowGroups[e].updateVisibility()}},l.prototype.findToggleWidget=function(t){var i=u()(":input.block-control",t);1===i.size()&&(this.toggleWidget=i,this.label=i.parent().find("label").text(),i.addClass("disable-behavior"))};var d=l,g=c.a.pageHeaderHeight();function v(t,i){this.headerRow=t,this.parentCMD=i,this.title=t.attr("title"),this.id=h(this.title),this.rowGroups=void 0,this.activator=void 0,this.subSections=[],this.headerRow.addClass(this.id)}v.prototype.isTopLevelSection=function(){return void 0!==this.parentCMD.getSection(this.id)},v.prototype.isVisible=function(){return this.headerRow.is(":visible")},v.prototype.getViewportEntryOffset=function(){return this.headerRow.offset().top-g},v.prototype.getSibling=function(t){for(var i=this.parentCMD.sections,e=i.length-1,o=0;o<e;o++){var n=o+t;if(!(n<0)){if(n>e)return;if(i[o]===this)return i[n]}}},v.prototype.adoptSection=function(t){if(this.isTopLevelSection()){var i=this.parentCMD.getSection(t);i&&this.parentCMD.removeSection(i.id)&&this.subSections.push(i)}},v.prototype.getRows=function(){var t=this.headerRow.next(),i=[],e=0;for(i.push(t);1===t.size()&&!t.hasClass("section-header-row");)i.push(t),t.hasClass(this.id)||(e++,t.addClass(this.id)),t=t.next();return e>0&&void 0!==this.rowGroups&&this.gatherRowGroups(i),i},v.prototype.setActivator=function(t){this.activator=t;var i=this;i.activator.click((function(){i.parentCMD.showSection(i)}))},v.prototype.activate=function(){this.activator?this.activator.click():console.warn("No activator attached to config section object.")},v.prototype.markAsActive=function(){this.parentCMD.hideSection(),this.activator.addClass("active"),this.markRowsAsActive()},v.prototype.markRowsAsActive=function(){for(var t=this.getRows(),i=0;i<t.length;i++)t[i].addClass("active");for(var e=0;e<this.subSections.length;e++)this.subSections[e].markRowsAsActive();this.updateRowGroupVisibility()},v.prototype.hasText=function(t){for(var i=u(),e=":containsci('"+t+"')",o=this.getRows(),n=0;n<o.length;n++){if(i(e,o[n]).size()>0)return!0}for(var s=0;s<this.subSections.length;s++)if(this.subSections[s].hasText(t))return!0;return!1},v.prototype.activeRowCount=function(){for(var t=0,i=this.getRows(),e=0;e<i.length;e++)i[e].hasClass("active")&&t++;return t},v.prototype.updateRowGroupVisibility=function(){void 0===this.rowGroups&&this.gatherRowGroups();for(var t=0;t<this.rowGroups.length;t++){this.rowGroups[t].updateVisibility()}for(var i=0;i<this.subSections.length;i++)this.subSections[i].updateRowGroupVisibility()},v.prototype.gatherRowGroups=function(t){if(this.rowGroups=[],void 0===t&&(t=this.getRows()),t.length>0){var i=new d(t[0],void 0);this.rowGroups=i.rowGroups;for(var e=0;e<t.length;e++){var o=t[e];if(o.hasClass("row-group-start")){var n=new d(o,i);i&&i.rowGroups.push(n),i=n,n.findToggleWidget(o)}else i&&(o.hasClass("row-group-end")?(i.endRow=o,i=i.parentRowGroupContainer):void 0===i.toggleWidget?i.findToggleWidget(o):i.rows.push(o))}}},v.prototype.getRowGroupLabels=function(){for(var t=[],i=0;i<this.rowGroups.length;i++){var e=this.rowGroups[i];t.push(e.getLabels())}return t},v.prototype.highlightText=function(t){for(var i=u(),e=":containsci('"+t+"')",o=this.getRows(),n=0;n<o.length;n++){var s=o[n];if(c.a.removeTextHighlighting(s),""!==t){var r=new RegExp("("+t+")","gi");i(e,s).find(":not(:input)").each((function(){i(this).contents().each((function(){if(3===this.nodeType){var t=i(this),e=t.text().replace(r,'<span class="highlight">$1</span>');t.replaceWith('<span class="highlight-split">'+e+"</span>")}}))}))}}for(var a=0;a<this.subSections.length;a++)this.subSections[a].highlightText(t)};var p=v;function w(t){var i=t.closest("form");return i.addClass("jenkins-config"),i}function b(t,i){this.$=u(),this.configForm=t,this.configTable=i,this.configTableBody=this.$("> tbody",i),this.activatorContainer=void 0,this.sections=[],this.findInput=void 0,this.showListeners=[],this.configWidgets=void 0,this.addWidgetsContainer(),this.addFindWidget()}b.prototype.getTopRows=function(){var t=this.configTableBody.children("tr");return t.addClass("config-table-top-row"),t},b.prototype.getFirstRow=function(){return this.getTopRows().first()},b.prototype.addWidgetsContainer=function(){var t=u();this.configWidgets=t('<div class="jenkins-config-widgets"></div>'),this.configWidgets.insertBefore(this.configForm)},b.prototype.addFindWidget=function(){var t,i=u(),e=this,o=i('<div class="find-container"><div class="find"><span title="Clear" class="clear">x</span><input placeholder="find"/></div></div>');e.findInput=i("input",o),i(".clear",o).click((function(){e.findInput.val(""),e.showSections(""),e.findInput.focus()})),e.findInput.keydown((function(){t&&(clearTimeout(t),t=void 0),t=setTimeout((function(){t=void 0,e.showSections(e.findInput.val())}),300)})),i(".jenkins-config-widgets .find-container input").focus((function(){c.a.fireBottomStickerAdjustEvent()})),this.configWidgets.append(o)},b.prototype.sectionCount=function(){return this.sections.length},b.prototype.hasSections=function(){var t=this.sectionCount()>0;return t||console.warn("Jenkins configuration without sections?"),t},b.prototype.sectionIds=function(){for(var t=[],i=0;i<this.sections.length;i++)t.push(this.sections[i].id);return t},b.prototype.activateSection=function(t){if(!t)throw'Invalid section id "'+t+'"';var i=this.getSection(t);i&&i.activate()},b.prototype.activeSection=function(){if(this.hasSections())for(var t=0;t<this.sections.length;t++){var i=this.sections[t];if(i.activator.hasClass("active"))return i}},b.prototype.getSection=function(t){if(this.hasSections())if("number"==typeof t){if(t>=0&&t<=this.sections.length-1)return this.sections[t]}else for(var i=0;i<this.sections.length;i++){var e=this.sections[i];if(e.id===t)return e}},b.prototype.removeSection=function(t){if(this.hasSections())for(var i=0;i<this.sections.length;i++){var e=this.sections[i];if(e.id===t)return this.sections.splice(i,1),e.activator&&e.activator.remove(),!0}return!1},b.prototype.activateFirstSection=function(){this.hasSections()&&this.activateSection(this.sections[0].id)},b.prototype.activeSectionCount=function(){var t=0;if(this.hasSections())for(var i=0;i<this.sections.length;i++){this.sections[i].activator.hasClass("active")&&t++}return t},b.prototype.showSection=function(t){if("string"==typeof t&&(t=this.getSection(t)),t){var i=this.getTopRows();t.markAsActive(),i.filter(".config_buttons").show(),t.highlightText(this.findInput.val()),function(t,i){for(var e=0;e<t.length;e++)o(t[e],i);function o(t,i){setTimeout((function(){t.call(i)}),1)}}(this.showListeners,t)}},b.prototype.hideSection=function(){var t=this.getTopRows();u()(".config-section-activator.active",this.activatorContainer).removeClass("active"),t.filter(".active").removeClass("active")},b.prototype.onShowSection=function(t){this.showListeners.push(t)},b.prototype.showSections=function(t){if(this.removeTextHighlighting(),""===t){if(this.hasSections()){for(var i=0;i<this.sections.length;i++)this.sections[i].activator.removeClass("hidden");var e=this.activeSection();e?e.highlightText(this.findInput.val()):this.showSection(this.sections[0])}}else if(this.hasSections()){for(var o=[],n=0;n<this.sections.length;n++){var s=this.sections[n];s.hasText(t)?(s.activator.removeClass("hidden"),o.push(s)):s.activator.addClass("hidden")}o.length>0?this.showSection(o[0]):this.hideSection()}},b.prototype.trackSectionVisibility=function(){if(!function(){if(void 0===window)return!0;if(void 0===window.navigator)return!0;if(void 0===window.navigator.userAgent)return!0;if("JasmineTest"===window.navigator.userAgent)return!0;if("JenkinsTest"===window.navigator.userAgent)return!0;if(-1!==window.navigator.userAgent.toLowerCase().indexOf("jsdom"))return!0;return!1}()){var t=this;try{for(var i=0;i<this.sections.length;i++){var e=this.sections[i];e.isVisible()?e.activator.show():e.activator.hide()}}finally{var o=t.trackSectionVisibilityTO||0;o+=10,o=Math.min(o,500),t.trackSectionVisibilityTO=o,setTimeout((function(){t.trackSectionVisibility()}),o)}}},b.prototype.removeTextHighlighting=function(){c.a.removeTextHighlighting(this.configForm)};var m={markConfigTableParentForm:w,findConfigTables:function(){return u()('form[name="config"] > table')},fromConfigTable:function(t){var i=u(),e=i(".section-header",t),o=w(t);e.each((function(){var t=i(this).closest("tr"),e=t.text();0===e.indexOf("#")&&(e=e.substring(1)),t.addClass("section-header-row"),t.attr("title",e)}));var n,s=new b(o,t),r=s.getTopRows(),a=s.getFirstRow();if(!a.hasClass("section-header-row")){var c=i('<tr class="section-header-row insert first" title="General"><td colspan="4"><div class="section-header"><a class="section-anchor">#</a>General</div></td></tr>');a.before(c),a=s.getFirstRow();var f=i.makeArray(r);f.unshift(c[0]),r=i(f)}a.addClass("section-header-row"),a.attr("title","General"),r.each((function(){var t=i(this);t.hasClass("section-header-row")&&(n=new p(t,s),s.sections.push(n))}));var l=i("#bottom-sticker",t).closest("tr");return l.removeClass(n.id),l.addClass(h("buttons")),s}};var y={specify:function(t,i,e,o){Behaviour.specify(t,i,e,o)}},S=e(4);e.d(i,"b",(function(){return C})),e.d(i,"a",(function(){return R})),y.specify(".dd-handle","config-drag-start",1e3,(function(t){c.a.fixDragEvent(t)}));var C=function(t,i,e){s()((function(){c.a.onload(".block-control",(function(){var o=s()(t);if(o.size()>0){var n=S.a.getGlobalItem("config:usetabs","yes");c.a.fixDragEvent(o),"yes"===n?o.each((function(){var t=s()(this),o=T(t,e);i.call(t,o),o.deactivator.click((function(){S.a.setGlobalItem("config:usetabs","no"),Object(r.getWindow)().location.reload()}))})):o.each((function(){var t=s()(this),i=k(t);m.markConfigTableParentForm(t),i.click((function(){S.a.setGlobalItem("config:usetabs","yes"),Object(r.getWindow)().location.reload()}))}))}}),t)}))},T=function(t,i){var e,o=(i||{}).trackSectionVisibility||!1;if(s.a.isArray(t))e=t;else if("string"==typeof t){var n=s()(t);if(0===n.size())throw"No config table found using selector '"+t+"'";e=m.fromConfigTable(n)}else e=m.fromConfigTable(t);var r,a=s()('<div class="tabBar config-section-activators"></div>');function c(t){var i=s()('<div class="tab config-section-activator"></div>');return i.text(t.title),i.addClass(t.id),i}e.activatorContainer=a;for(var u=0;u<e.sections.length;u++){var f=c(r=e.sections[u]);a.append(f),r.setActivator(f)}var h=s()('<div class="form-config tabBarFrame"></div>'),l=s()('<div class="noTabs" title="Remove configuration tabs and revert to the &quot;classic&quot; configuration view">Remove tabs</div>');return e.configWidgets.append(h),e.configWidgets.prepend(l),h.append(a),h.mouseenter((function(){h.addClass("mouse-over")})),h.mouseleave((function(){h.removeClass("mouse-over")})),e.deactivator=l,e.activateFirstSection(),!0===o&&e.trackSectionVisibility(),e},k=function(t){var i=s()('<div class="jenkins-config-widgets"><div class="showTabs" title="Add configuration section tabs">Add tabs</div></div>');return i.insertBefore(t.parent()),i},R=function(t){var i=s()('<div class="find-toggle" title="Find"></div>');i.click((function(){var i=s()(".find-container",t.configWidgets);i.hasClass("visible")?(i.removeClass("visible"),S.a.setGlobalItem("config:showfinder","no")):(i.addClass("visible"),s()("input",i).focus(),S.a.setGlobalItem("config:showfinder","yes"))})),"yes"===S.a.getGlobalItem("config:showfinder","yes")&&i.click()}}});
+/******/ (function() { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 2774:
+/***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// UNUSED EXPORTS: on, scrollspeed, setScrollspeed, tabbars
+
+// EXTERNAL MODULE: ./.yarn/cache/jquery-npm-3.6.1-6f29087f48-6177d866a7.zip/node_modules/jquery/dist/jquery.js
+var jquery = __webpack_require__(4655);
+var jquery_default = /*#__PURE__*/__webpack_require__.n(jquery);
+// EXTERNAL MODULE: ./.yarn/cache/window-handle-npm-1.0.1-369b8e9cbe-8f2c183a0d.zip/node_modules/window-handle/index.js
+var window_handle = __webpack_require__(30);
+;// CONCATENATED MODULE: ./src/main/js/util/page.js
+
+
+var timestamp = new Date().getTime();
+var loadedClass = "jenkins-loaded-" + timestamp;
+
+/**
+ * Wait for the specified element to be added to the DOM.
+ * <p>
+ * A jQuery based alternative to Behaviour.specify. Grrrr.
+ * @param selector The jQuery selector.
+ * @param callback The callback to call after finding new elements. This
+ * callback must return a boolean value of true if scanning is to continue.
+ * @param contextEl The jQuery selector context (optional).
+ */
+function page_onload(selector, callback, contextEl) {
+  function registerRescan() {
+    setTimeout(scan, 50);
+  }
+  function scan() {
+    var elements = jquery_default()(selector, contextEl).not(loadedClass);
+    if (elements.length > 0) {
+      elements.addClass(loadedClass);
+      if (callback(elements) === true) {
+        registerRescan();
+      }
+    } else {
+      registerRescan();
+    }
+  }
+  scan();
+}
+function winScrollTop() {
+  var win = jquery_default()((0,window_handle.getWindow)());
+  return win.scrollTop();
+}
+function onWinScroll(callback) {
+  jquery_default()((0,window_handle.getWindow)()).on("scroll", callback);
+}
+function pageHeaderHeight() {
+  return document.querySelector("#page-header").offsetHeight + breadcrumbBarHeight();
+}
+function breadcrumbBarHeight() {
+  return document.querySelector("#breadcrumbBar").offsetHeight;
+}
+function removeTextHighlighting(selector) {
+  jquery_default()("span.highlight-split", selector).each(function () {
+    var highlightSplit = jquery_default()(this);
+    highlightSplit.before(highlightSplit.text());
+    highlightSplit.remove();
+  });
+}
+/* harmony default export */ var page = ({
+  onload: page_onload,
+  winScrollTop,
+  onWinScroll,
+  pageHeaderHeight,
+  breadcrumbBarHeight,
+  removeTextHighlighting
+});
+;// CONCATENATED MODULE: ./src/main/js/util/jquery-ext.js
+/*
+ * Some internal jQuery extensions.
+ *
+ * After migrating to webpack it modifies the provided version of jquery
+ */
+
+
+
+/**
+ * TODO: look into other way of doing this
+ */
+var $ext;
+var getJQuery = function () {
+  if (!$ext) {
+    initJQueryExt();
+  }
+  return $ext;
+};
+
+/*
+ * Clear the $ext instance if the window changes. Primarily for unit testing.
+ */
+window_handle.getWindow(function () {
+  $ext = undefined;
+});
+
+/**
+ * Adds the :containsci selector to jQuery
+ */
+function initJQueryExt() {
+  $ext = (jquery_default());
+
+  /**
+   * A pseudo selector that performs a case insensitive text contains search i.e. the same
+   * as the standard ':contains' selector, but case insensitive.
+   */
+  $ext.expr[":"].containsci = $ext.expr.createPseudo(function (text) {
+    return function (element) {
+      var elementText = $ext(element).text();
+      var result = elementText.toUpperCase().indexOf(text.toUpperCase()) !== -1;
+      return result;
+    };
+  });
+}
+initJQueryExt();
+;// CONCATENATED MODULE: ./src/main/js/widgets/config/model/util.js
+function toId(string) {
+  string = string.trim();
+  return "config_" + string.replace(/[\W_]+/g, "_").toLowerCase();
+}
+;// CONCATENATED MODULE: ./src/main/js/widgets/config/model/ConfigRowGrouping.js
+
+
+/*
+ * =======================================================================================
+ * Configuration table row grouping i.e. row-set-*, optional-block-*, radio-block-* etc
+ *
+ * A ConfigSection maintains a list of ConfigRowGrouping and then ConfigRowGrouping
+ * itself maintains a list i.e. it's hierarchical. See ConfigSection.gatherRowGroups().
+ * =======================================================================================
+ */
+function ConfigRowGrouping(startRow, parentRowGroupContainer) {
+  this.startRow = startRow;
+  this.parentRowGroupContainer = parentRowGroupContainer;
+  this.endRow = undefined;
+  this.rows = [];
+  this.rowGroups = []; // Support groupings nested inside groupings
+  this.toggleWidget = undefined;
+  this.label = undefined;
+}
+ConfigRowGrouping.prototype.getRowCount = function (includeChildren) {
+  var count = this.rows.length;
+  if (includeChildren === undefined || includeChildren === true) {
+    for (var i = 0; i < this.rowGroups.length; i++) {
+      count += this.rowGroups[i].getRowCount();
+    }
+  }
+  return count;
+};
+ConfigRowGrouping.prototype.getLabels = function () {
+  var labels = [];
+  if (this.label) {
+    labels.push(this.label);
+  }
+  for (var i = 0; i < this.rowGroups.length; i++) {
+    var rowSet = this.rowGroups[i];
+    labels.push(rowSet.getLabels());
+  }
+  return labels;
+};
+ConfigRowGrouping.prototype.updateVisibility = function () {
+  if (this.toggleWidget !== undefined) {
+    var isChecked = this.toggleWidget.is(":checked");
+    for (var i = 0; i < this.rows.length; i++) {
+      if (isChecked) {
+        this.rows[i].show();
+      } else {
+        this.rows[i].not(".help-area").hide();
+      }
+    }
+  }
+  for (var ii = 0; ii < this.rowGroups.length; ii++) {
+    var rowSet = this.rowGroups[ii];
+    rowSet.updateVisibility();
+  }
+};
+
+/*
+ * Find the row-set toggle widget i.e. the input element that indicates that
+ * the row-set rows should be made visible or not.
+ */
+ConfigRowGrouping.prototype.findToggleWidget = function (row) {
+  var $ = getJQuery();
+  var input = $(":input.block-control", row);
+  if (input.length === 1) {
+    this.toggleWidget = input;
+    this.label = input.next().text();
+    input.addClass("disable-behavior");
+  }
+};
+/* harmony default export */ var model_ConfigRowGrouping = (ConfigRowGrouping);
+;// CONCATENATED MODULE: ./src/main/js/widgets/config/model/ConfigSection.js
+
+
+
+
+var ConfigSection_pageHeaderHeight = page.pageHeaderHeight();
+
+/*
+ * =======================================================================================
+ * Configuration table section.
+ * =======================================================================================
+ */
+function ConfigSection(headerRow, parentCMD) {
+  this.headerRow = headerRow;
+  this.parentCMD = parentCMD;
+  this.title = headerRow.attr("title");
+  this.id = toId(this.title);
+  this.rowGroups = undefined;
+  this.activator = undefined;
+  this.subSections = [];
+  this.headerRow.addClass(this.id);
+}
+ConfigSection.prototype.isTopLevelSection = function () {
+  return this.parentCMD.getSection(this.id) !== undefined;
+};
+ConfigSection.prototype.isVisible = function () {
+  return this.headerRow.is(":visible");
+};
+
+/**
+ * Get the page offset (height) at which this section comes
+ * into view.
+ * @returns {number}
+ */
+ConfigSection.prototype.getViewportEntryOffset = function () {
+  return this.headerRow.offset().top - ConfigSection_pageHeaderHeight;
+};
+
+/**
+ * Get the sibling section at the relative offset.
+ * @param relOffset
+ */
+ConfigSection.prototype.getSibling = function (relOffset) {
+  var sections = this.parentCMD.sections;
+  var endIndex = sections.length - 1;
+  for (var i = 0; i < endIndex; i++) {
+    var testIndex = i + relOffset;
+    if (testIndex < 0) {
+      continue;
+    } else if (testIndex > endIndex) {
+      return undefined;
+    }
+    if (sections[i] === this) {
+      return sections[testIndex];
+    }
+  }
+  return undefined;
+};
+
+/**
+ * Move another top-level section into this section i.e. adopt it.
+ * <p>
+ * This allows us to take a top level section (by id) and push it down
+ * into another section e.g. pushing the "Advanced" section into the
+ * "General" section.
+ * @param sectionId The id of the top-level section to be adopted.
+ */
+ConfigSection.prototype.adoptSection = function (sectionId) {
+  if (!this.isTopLevelSection()) {
+    // Only top-level sections can adopt.
+    return;
+  }
+  var child = this.parentCMD.getSection(sectionId);
+  if (child && this.parentCMD.removeSection(child.id)) {
+    this.subSections.push(child);
+  }
+};
+
+/*
+ * Get the section rows.
+ */
+ConfigSection.prototype.getRows = function () {
+  var curTr = this.headerRow.next();
+  var rows = [];
+  var numNewRows = 0;
+  rows.push(curTr);
+  while (curTr.length === 1 && !curTr.hasClass("section-header-row")) {
+    rows.push(curTr);
+    if (!curTr.hasClass(this.id)) {
+      numNewRows++;
+      curTr.addClass(this.id);
+    }
+    curTr = curTr.next();
+  }
+  if (numNewRows > 0) {
+    // We have new rows in the section ... reset cached info.
+    if (this.rowGroups !== undefined) {
+      this.gatherRowGroups(rows);
+    }
+  }
+  return rows;
+};
+
+/*
+ * Set the element (jquery) that activates the section (on click).
+ */
+ConfigSection.prototype.setActivator = function (activator) {
+  this.activator = activator;
+  var section = this;
+  section.activator.click(function () {
+    section.parentCMD.showSection(section);
+  });
+};
+ConfigSection.prototype.activate = function () {
+  if (this.activator) {
+    this.activator.click();
+  } else {
+    console.warn("No activator attached to config section object.");
+  }
+};
+ConfigSection.prototype.markAsActive = function () {
+  this.parentCMD.hideSection();
+  this.activator.addClass("active");
+  this.markRowsAsActive();
+};
+ConfigSection.prototype.markRowsAsActive = function () {
+  var rows = this.getRows();
+  for (var i = 0; i < rows.length; i++) {
+    rows[i].addClass("active");
+  }
+  for (var ii = 0; ii < this.subSections.length; ii++) {
+    this.subSections[ii].markRowsAsActive();
+  }
+  this.updateRowGroupVisibility();
+};
+ConfigSection.prototype.hasText = function (text) {
+  var $ = getJQuery();
+  var selector = ":containsci('" + text + "')";
+  var sectionRows = this.getRows();
+  for (var i1 = 0; i1 < sectionRows.length; i1++) {
+    var row = sectionRows[i1];
+    var elementsWithText = $(selector, row);
+    if (elementsWithText.length > 0) {
+      return true;
+    }
+  }
+  for (var i2 = 0; i2 < this.subSections.length; i2++) {
+    if (this.subSections[i2].hasText(text)) {
+      return true;
+    }
+  }
+  return false;
+};
+ConfigSection.prototype.activeRowCount = function () {
+  var activeRowCount = 0;
+  var rows = this.getRows();
+  for (var i = 0; i < rows.length; i++) {
+    if (rows[i].hasClass("active")) {
+      activeRowCount++;
+    }
+  }
+  return activeRowCount;
+};
+ConfigSection.prototype.updateRowGroupVisibility = function () {
+  if (this.rowGroups === undefined) {
+    // Lazily gather row grouping information.
+    this.gatherRowGroups();
+  }
+  for (var i = 0; i < this.rowGroups.length; i++) {
+    var rowGroup = this.rowGroups[i];
+    rowGroup.updateVisibility();
+  }
+  for (var ii = 0; ii < this.subSections.length; ii++) {
+    this.subSections[ii].updateRowGroupVisibility();
+  }
+};
+ConfigSection.prototype.gatherRowGroups = function (rows) {
+  this.rowGroups = [];
+
+  // Only tracking row-sets that are bounded by 'row-set-start' and 'row-set-end' (for now).
+  // Also, only capturing the rows after the 'block-control' input (checkbox, radio etc)
+  // and before the 'row-set-end'.
+  // TODO: Find out how these actually work. It seems like they can be nested into a hierarchy :(
+  // Also seems like you can have these "optional-block" thingies which are not wrapped
+  // in 'row-set-start' etc. Grrrrrr :(
+
+  if (rows === undefined) {
+    rows = this.getRows();
+  }
+  if (rows.length > 0) {
+    // Create a top level "fake" ConfigRowGrouping just to capture
+    // the top level groupings. We copy the rowGroups info out
+    // of this and use it in the top "this" ConfigSection instance.
+    var rowGroupContainer = new model_ConfigRowGrouping(rows[0], undefined);
+    this.rowGroups = rowGroupContainer.rowGroups;
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      if (row.hasClass("row-group-start")) {
+        var newRowGroup = new model_ConfigRowGrouping(row, rowGroupContainer);
+        if (rowGroupContainer) {
+          rowGroupContainer.rowGroups.push(newRowGroup);
+        }
+        rowGroupContainer = newRowGroup;
+        newRowGroup.findToggleWidget(row);
+      } else if (rowGroupContainer) {
+        if (row.hasClass("row-group-end")) {
+          rowGroupContainer.endRow = row;
+          rowGroupContainer = rowGroupContainer.parentRowGroupContainer; // pop back off the "stack"
+        } else if (rowGroupContainer.toggleWidget === undefined) {
+          rowGroupContainer.findToggleWidget(row);
+        } else {
+          // we have the toggleWidget, which means that this row is
+          // one of the rows after that row and is one of the rows that's
+          // subject to being made visible/hidden when the input is
+          // checked or unchecked.
+          rowGroupContainer.rows.push(row);
+        }
+      }
+    }
+  }
+};
+ConfigSection.prototype.getRowGroupLabels = function () {
+  var labels = [];
+  for (var i = 0; i < this.rowGroups.length; i++) {
+    var rowGroup = this.rowGroups[i];
+    labels.push(rowGroup.getLabels());
+  }
+  return labels;
+};
+ConfigSection.prototype.highlightText = function (text) {
+  var $ = getJQuery();
+  var selector = ":containsci('" + text + "')";
+  var rows = this.getRows();
+  for (var i1 = 0; i1 < rows.length; i1++) {
+    var row = rows[i1];
+    page.removeTextHighlighting(row);
+    if (text !== "") {
+      var regex = new RegExp("(" + text + ")", "gi");
+
+      /*jshint loopfunc: true */
+      $(selector, row).find(":not(:input)").each(function () {
+        var $this = $(this);
+        $this.contents().each(function () {
+          // We specifically only mess with text nodes
+          if (this.nodeType === 3) {
+            var $textNode = $(this);
+            var highlightedMarkup = $textNode.text().replace(regex, '<span class="highlight">$1</span>');
+            $textNode.replaceWith('<span class="highlight-split">' + highlightedMarkup + "</span>");
+          }
+        });
+      });
+    }
+  }
+  for (var i2 = 0; i2 < this.subSections.length; i2++) {
+    this.subSections[i2].highlightText(text);
+  }
+};
+/* harmony default export */ var model_ConfigSection = (ConfigSection);
+;// CONCATENATED MODULE: ./src/main/js/widgets/config/model/ConfigTableMetaData.js
+
+
+
+
+
+/*
+ * Internal support module for config tables.
+ */
+
+function markConfigTableParentForm(configTable) {
+  var form = configTable.closest("form");
+  form.addClass("jenkins-config");
+  return form;
+}
+function findConfigTables() {
+  var $ = getJQuery();
+  // The config tables are the immediate child <div> elements of <form> elements
+  // with a name of "config"?
+  return $('form[name="config"] > div');
+}
+function closestTR(node) {
+  return node.closest("tr, .tr");
+}
+function fromConfigTable(configTable) {
+  var $ = getJQuery();
+  var sectionHeaders = $(".jenkins-section__title", configTable);
+  var configForm = markConfigTableParentForm(configTable);
+
+  // Mark the ancestor <tr>s of the section headers and add a title
+  sectionHeaders.each(function () {
+    var sectionHeader = $(this);
+    var sectionRow = sectionHeader;
+    var sectionTitle = sectionRow.text();
+
+    // Remove leading hash from accumulated text in title (from <a> element).
+    if (sectionTitle.indexOf("#") === 0) {
+      sectionTitle = sectionTitle.substring(1);
+    }
+    sectionRow.addClass("section-header-row");
+    sectionRow.attr("title", sectionTitle);
+  });
+  var configTableMetadata = new ConfigTableMetaData(configForm, configTable);
+  var topRows = configTableMetadata.getTopRows();
+  var firstRow = configTableMetadata.getFirstRow();
+  var curSection;
+
+  // The first set of rows don't have a 'section-header-row', so we manufacture one,
+  // calling it a "General" section. We do this by marking the first row in the table.
+  // See the next block of code.
+
+  if (!firstRow.hasClass("section-header-row")) {
+    var tr;
+    if (configTable[0].nodeName === "TR") {
+      tr = "tr";
+    } else {
+      tr = "div";
+    }
+    var generalRow = $("<" + tr + ' class="section-header-row insert first tr" title="General"><div class="jenkins-section__title"><a class="section-anchor">#</a>General</div></' + tr + ">");
+    firstRow.before(generalRow);
+    firstRow = configTableMetadata.getFirstRow();
+    var newArray = $.makeArray(topRows);
+    newArray.unshift(generalRow[0]);
+    topRows = $(newArray);
+  }
+  firstRow.addClass("section-header-row");
+  firstRow.attr("title", "General");
+
+  // Go through the top level <tr> elements (immediately inside the <tbody>)
+  // and group the related <tr>s based on the "section-header-row", using a "normalized"
+  // version of the section title as the section id.
+  topRows.each(function () {
+    var tr = $(this);
+    if (tr.hasClass("section-header-row")) {
+      // a new section
+      curSection = new model_ConfigSection(tr, configTableMetadata);
+      configTableMetadata.sections.push(curSection);
+    }
+  });
+  var buttonsRow = closestTR($("#bottom-sticker", configTable));
+  buttonsRow.removeClass(curSection.id);
+  buttonsRow.addClass(toId("buttons"));
+  return configTableMetadata;
+}
+
+/*
+ * =======================================================================================
+ * ConfigTable MetaData class.
+ * =======================================================================================
+ */
+function ConfigTableMetaData(configForm, configTable) {
+  this.$ = getJQuery();
+  this.configForm = configForm;
+  this.configTable = configTable;
+  this.configTableBody = configTable[0].nodeName === "DIV" ? configTable : this.$("> tbody", configTable);
+  this.activatorContainer = undefined;
+  this.sections = [];
+  this.findInput = undefined;
+  this.showListeners = [];
+  this.configWidgets = undefined;
+  this.addWidgetsContainer();
+  this.addFindWidget();
+}
+ConfigTableMetaData.prototype.getTopRows = function () {
+  var topRows = this.configTableBody.find("tr, .tr, .jenkins-section > .jenkins-section__title");
+  return topRows;
+};
+ConfigTableMetaData.prototype.getFirstRow = function () {
+  return this.getTopRows().first();
+};
+ConfigTableMetaData.prototype.addWidgetsContainer = function () {
+  var $ = getJQuery();
+  this.configWidgets = $('<div class="jenkins-config-widgets"></div>');
+  this.configWidgets.insertBefore(this.configForm);
+};
+ConfigTableMetaData.prototype.addFindWidget = function () {
+  var $ = getJQuery();
+  var thisTMD = this;
+  var findWidget = $('<div class="find-container"><div class="find"><span title="Clear" class="clear">x</span><input placeholder="find"/></div></div>');
+  thisTMD.findInput = $("input", findWidget);
+
+  // Add the find text clearer
+  $(".clear", findWidget).click(function () {
+    thisTMD.findInput.val("");
+    thisTMD.showSections("");
+    thisTMD.findInput.focus();
+  });
+  var findTimeout;
+  thisTMD.findInput.keydown(function () {
+    if (findTimeout) {
+      clearTimeout(findTimeout);
+      findTimeout = undefined;
+    }
+    findTimeout = setTimeout(function () {
+      findTimeout = undefined;
+      thisTMD.showSections(thisTMD.findInput.val());
+    }, 300);
+  });
+  this.configWidgets.append(findWidget);
+};
+ConfigTableMetaData.prototype.sectionCount = function () {
+  return this.sections.length;
+};
+ConfigTableMetaData.prototype.hasSections = function () {
+  var hasSections = this.sectionCount() > 0;
+  if (!hasSections) {
+    console.warn("Jenkins configuration without sections?");
+  }
+  return hasSections;
+};
+ConfigTableMetaData.prototype.sectionIds = function () {
+  var sectionIds = [];
+  for (var i = 0; i < this.sections.length; i++) {
+    sectionIds.push(this.sections[i].id);
+  }
+  return sectionIds;
+};
+ConfigTableMetaData.prototype.activateSection = function (sectionId) {
+  if (!sectionId) {
+    throw 'Invalid section id "' + sectionId + '"';
+  }
+  var section = this.getSection(sectionId);
+  if (section) {
+    section.activate();
+  }
+};
+ConfigTableMetaData.prototype.activeSection = function () {
+  if (this.hasSections()) {
+    for (var i = 0; i < this.sections.length; i++) {
+      var section = this.sections[i];
+      if (section.activator.hasClass("active")) {
+        return section;
+      }
+    }
+  }
+};
+ConfigTableMetaData.prototype.getSection = function (ref) {
+  if (this.hasSections()) {
+    if (typeof ref === "number") {
+      // It's a section index...
+      if (ref >= 0 && ref <= this.sections.length - 1) {
+        return this.sections[ref];
+      }
+    } else {
+      // It's a section ID...
+      for (var i = 0; i < this.sections.length; i++) {
+        var section = this.sections[i];
+        if (section.id === ref) {
+          return section;
+        }
+      }
+    }
+  }
+  return undefined;
+};
+ConfigTableMetaData.prototype.removeSection = function (sectionId) {
+  if (this.hasSections()) {
+    for (var i = 0; i < this.sections.length; i++) {
+      var section = this.sections[i];
+      if (section.id === sectionId) {
+        this.sections.splice(i, 1);
+        if (section.activator) {
+          section.activator.remove();
+        }
+        return true;
+      }
+    }
+  }
+  return false;
+};
+ConfigTableMetaData.prototype.activateFirstSection = function () {
+  if (this.hasSections()) {
+    this.activateSection(this.sections[0].id);
+  }
+};
+ConfigTableMetaData.prototype.activeSectionCount = function () {
+  var activeSectionCount = 0;
+  if (this.hasSections()) {
+    for (var i = 0; i < this.sections.length; i++) {
+      var section = this.sections[i];
+      if (section.activator.hasClass("active")) {
+        activeSectionCount++;
+      }
+    }
+  }
+  return activeSectionCount;
+};
+ConfigTableMetaData.prototype.showSection = function (section) {
+  if (typeof section === "string") {
+    section = this.getSection(section);
+  }
+  if (section) {
+    var topRows = this.getTopRows();
+
+    // Active the specified section
+    section.markAsActive();
+
+    // and always show the buttons
+    topRows.filter(".config_buttons").show();
+
+    // Update text highlighting
+    section.highlightText(this.findInput.val());
+    fireListeners(this.showListeners, section);
+  }
+};
+ConfigTableMetaData.prototype.hideSection = function () {
+  var topRows = this.getTopRows();
+  var $ = getJQuery();
+  $(".config-section-activator.active", this.activatorContainer).removeClass("active");
+  topRows.filter(".active").removeClass("active");
+};
+ConfigTableMetaData.prototype.onShowSection = function (listener) {
+  this.showListeners.push(listener);
+};
+ConfigTableMetaData.prototype.showSections = function (withText) {
+  this.removeTextHighlighting();
+  if (withText === "") {
+    if (this.hasSections()) {
+      for (var i1 = 0; i1 < this.sections.length; i1++) {
+        this.sections[i1].activator.removeClass("hidden");
+      }
+      var activeSection = this.activeSection();
+      if (!activeSection) {
+        this.showSection(this.sections[0]);
+      } else {
+        activeSection.highlightText(this.findInput.val());
+      }
+    }
+  } else {
+    if (this.hasSections()) {
+      var sectionsWithText = [];
+      for (var i2 = 0; i2 < this.sections.length; i2++) {
+        var section = this.sections[i2];
+        if (section.hasText(withText)) {
+          section.activator.removeClass("hidden");
+          sectionsWithText.push(section);
+        } else {
+          section.activator.addClass("hidden");
+        }
+      }
+
+      // Select the first section to contain the text.
+      if (sectionsWithText.length > 0) {
+        this.showSection(sectionsWithText[0]);
+      } else {
+        this.hideSection();
+      }
+    }
+  }
+};
+
+/**
+ * We need this because sections can mysteriously change visibility,
+ * which looks strange for scroolspy.
+ */
+ConfigTableMetaData.prototype.trackSectionVisibility = function () {
+  if (isTestEnv()) {
+    return;
+  }
+  var thisConfig = this;
+  try {
+    for (var i = 0; i < this.sections.length; i++) {
+      var section = this.sections[i];
+      if (section.isVisible()) {
+        section.activator.show();
+      } else {
+        section.activator.hide();
+      }
+    }
+  } finally {
+    var interval = thisConfig.trackSectionVisibilityTO || 0;
+
+    // The rescan interval will drop off over time, starting out very fast.
+    interval += 10;
+    interval = Math.min(interval, 500);
+    thisConfig.trackSectionVisibilityTO = interval;
+    setTimeout(function () {
+      thisConfig.trackSectionVisibility();
+    }, interval);
+  }
+};
+ConfigTableMetaData.prototype.removeTextHighlighting = function () {
+  page.removeTextHighlighting(this.configForm);
+};
+function fireListeners(listeners, contextObject) {
+  for (var i = 0; i < listeners.length; i++) {
+    fireListener(listeners[i], contextObject);
+  }
+  function fireListener(listener, contextObject) {
+    setTimeout(function () {
+      listener.call(contextObject);
+    }, 1);
+  }
+}
+function isTestEnv() {
+  if (window === undefined) {
+    return true;
+  } else if (window.navigator === undefined) {
+    return true;
+  } else if (window.navigator.userAgent === undefined) {
+    return true;
+  } else if (window.navigator.userAgent === "JasmineTest") {
+    return true;
+  } else if (window.navigator.userAgent === "JenkinsTest") {
+    return true;
+  } else if (window.navigator.userAgent.toLowerCase().indexOf("jsdom") !== -1) {
+    return true;
+  }
+  return false;
+}
+/* harmony default export */ var model_ConfigTableMetaData = ({
+  markConfigTableParentForm,
+  findConfigTables,
+  fromConfigTable
+});
+;// CONCATENATED MODULE: ./src/main/js/util/localStorage.js
+
+let storage = (0,window_handle.getWindow)().localStorage;
+function setMock() {
+  storage = {
+    storage: {},
+    setItem: function (name, value) {
+      this.storage[name] = value;
+    },
+    getItem: function (name) {
+      return this.storage[name];
+    },
+    removeItem: function (name) {
+      delete this.storage[name];
+    }
+  };
+}
+function setItem(name, value) {
+  storage.setItem(name, value);
+}
+function getItem(name, defaultVal) {
+  var value = storage.getItem(name);
+  if (!value) {
+    value = defaultVal;
+  }
+  return value;
+}
+function removeItem(name) {
+  return storage.removeItem(name);
+}
+if (typeof storage === "undefined") {
+  console.warn("HTML5 localStorage not supported by this browser.");
+  // mock it...
+  setMock();
+}
+/* harmony default export */ var localStorage = ({
+  setMock,
+  setItem,
+  getItem,
+  removeItem
+});
+;// CONCATENATED MODULE: ./src/main/js/util/jenkinsLocalStorage.js
+
+
+
+/**
+ * Store a Jenkins globally scoped value.
+ */
+function setGlobalItem(name, value) {
+  localStorage.setItem("jenkins:" + name, value);
+}
+
+/**
+ * Get a Jenkins globally scoped value.
+ */
+function getGlobalItem(name, defaultVal) {
+  return localStorage.getItem("jenkins:" + name, defaultVal);
+}
+
+/**
+ * Store a Jenkins page scoped value.
+ */
+function setPageItem(name, value) {
+  name = "jenkins:" + name + ":" + (0,window_handle.getWindow)().location.href;
+  localStorage.setItem(name, value);
+}
+
+/**
+ * Get a Jenkins page scoped value.
+ */
+function getPageItem(name, defaultVal) {
+  name = "jenkins:" + name + ":" + (0,window_handle.getWindow)().location.href;
+  return localStorage.getItem(name, defaultVal);
+}
+/* harmony default export */ var jenkinsLocalStorage = ({
+  setGlobalItem,
+  getGlobalItem,
+  setPageItem,
+  getPageItem
+});
+;// CONCATENATED MODULE: ./src/main/js/widgets/config/tabbar.js
+
+
+
+
+
+var tabBarShowPreferenceKey = "config:usetabs";
+var addPageTabs = function (configSelector, onEachConfigTable, options) {
+  jquery_default()(function () {
+    // We need to wait until after radioBlock.js Behaviour.js rules
+    // have been applied, otherwise row-set rows become visible across sections.
+    page.onload(".block-control", function () {
+      // Only do job configs for now.
+      var configTables = jquery_default()(configSelector);
+      if (configTables.length > 0) {
+        var tabBarShowPreference = jenkinsLocalStorage.getGlobalItem(tabBarShowPreferenceKey, "yes");
+        if (tabBarShowPreference === "yes") {
+          configTables.each(function () {
+            var configTable = jquery_default()(this);
+            var tabBar = addTabs(configTable, options);
+            onEachConfigTable.call(configTable, tabBar);
+            tabBar.deactivator.click(function () {
+              jenkinsLocalStorage.setGlobalItem(tabBarShowPreferenceKey, "no");
+              (0,window_handle.getWindow)().location.reload();
+            });
+          });
+        } else {
+          configTables.each(function () {
+            var configTable = jquery_default()(this);
+            var activator = addTabsActivator(configTable);
+            model_ConfigTableMetaData.markConfigTableParentForm(configTable);
+            activator.click(function () {
+              jenkinsLocalStorage.setGlobalItem(tabBarShowPreferenceKey, "yes");
+              (0,window_handle.getWindow)().location.reload();
+            });
+          });
+        }
+      }
+    }, configSelector);
+  });
+};
+var addTabsOnFirst = function () {
+  return addTabs(tableMetadata.findConfigTables().first());
+};
+var addTabs = function (configTable, options) {
+  var configTableMetadata;
+  var tabOptions = options || {};
+  var trackSectionVisibility = tabOptions.trackSectionVisibility || false;
+  if (jquery_default().isArray(configTable)) {
+    // It's a config <table> metadata block
+    configTableMetadata = configTable;
+  } else if (typeof configTable === "string") {
+    // It's a config <table> selector
+    var configTableEl = jquery_default()(configTable);
+    if (configTableEl.length === 0) {
+      throw "No config table found using selector '" + configTable + "'";
+    } else {
+      configTableMetadata = model_ConfigTableMetaData.fromConfigTable(configTableEl);
+    }
+  } else {
+    // It's a config <table> element
+    configTableMetadata = model_ConfigTableMetaData.fromConfigTable(configTable);
+  }
+  var tabBar = jquery_default()('<div class="tabBar config-section-activators"></div>');
+  configTableMetadata.activatorContainer = tabBar;
+  function newTab(section) {
+    var tab = jquery_default()('<div class="tab config-section-activator"></div>');
+    tab.text(section.title);
+    tab.addClass(section.id);
+    return tab;
+  }
+  var section;
+  for (var i = 0; i < configTableMetadata.sections.length; i++) {
+    section = configTableMetadata.sections[i];
+    var tab = newTab(section);
+    tabBar.append(tab);
+    section.setActivator(tab);
+  }
+  var tabs = jquery_default()('<div class="form-config tabBarFrame"></div>');
+  var noTabs = jquery_default()('<div class="noTabs" title="Remove configuration tabs and revert to the &quot;classic&quot; configuration view">Remove tabs</div>');
+  configTableMetadata.configWidgets.append(tabs);
+  configTableMetadata.configWidgets.prepend(noTabs);
+  tabs.append(tabBar);
+  tabs.mouseenter(function () {
+    tabs.addClass("mouse-over");
+  });
+  tabs.mouseleave(function () {
+    tabs.removeClass("mouse-over");
+  });
+  configTableMetadata.deactivator = noTabs;
+
+  // Always activate the first section by default.
+  configTableMetadata.activateFirstSection();
+  if (trackSectionVisibility === true) {
+    configTableMetadata.trackSectionVisibility();
+  }
+  return configTableMetadata;
+};
+var addTabsActivator = function (configTable) {
+  var configWidgets = jquery_default()('<div class="jenkins-config-widgets"><div class="showTabs" title="Add configuration section tabs">Add tabs</div></div>');
+  configWidgets.insertBefore(configTable.parent());
+  return configWidgets;
+};
+var addFinderToggle = function (configTableMetadata) {
+  var findToggle = jquery_default()('<div class="find-toggle" title="Find"></div>');
+  var finderShowPreferenceKey = "config:showfinder";
+  findToggle.click(function () {
+    var findContainer = jquery_default()(".find-container", configTableMetadata.configWidgets);
+    if (findContainer.hasClass("visible")) {
+      findContainer.removeClass("visible");
+      jenkinsLocalStorage.setGlobalItem(finderShowPreferenceKey, "no");
+    } else {
+      findContainer.addClass("visible");
+      jquery_default()("input", findContainer).focus();
+      jenkinsLocalStorage.setGlobalItem(finderShowPreferenceKey, "yes");
+    }
+  });
+  if (jenkinsLocalStorage.getGlobalItem(finderShowPreferenceKey, "yes") === "yes") {
+    findToggle.click();
+  }
+};
+;// CONCATENATED MODULE: ./src/main/js/config-scrollspy.js
+
+
+
+
+var isScrolling = false;
+var ignoreNextScrollEvent = false;
+var config_scrollspy_pageHeaderHeight = page.pageHeaderHeight();
+var config_scrollspy_breadcrumbBarHeight = page.breadcrumbBarHeight();
+
+// Some stuff useful for testing.
+var tabbars = [];
+var scrollspeed = 500;
+// Used to set scrollspeed from the the test suite
+function setScrollspeed(newScrollspeed) {
+  scrollspeed = newScrollspeed;
+}
+var eventListeners = [];
+var on = function (listener) {
+  eventListeners.push(listener);
+};
+function notify(event) {
+  for (var i = 0; i < eventListeners.length; i++) {
+    eventListeners[i](event);
+  }
+}
+jquery_default()(function () {
+  addPageTabs(".config-table.scrollspy", function (tabBar) {
+    tabbars.push(tabBar);
+    addFinderToggle(tabBar);
+    tabBar.onShowSection(function () {
+      // Scroll to the section.
+      scrollTo(this, tabBar);
+    });
+    autoActivateTabs(tabBar);
+    page.onWinScroll(function () {
+      autoActivateTabs(tabBar);
+    });
+    page.onWinScroll(function () {
+      stickTabbar(tabBar);
+    });
+
+    // Manually trigger a repaint, otherwise Folder forms will not position
+    // the buttons correctly. This is caused by upgrading jQuery to 3.5.x,
+    // and probably has something to do with event listeners running in
+    // different order.
+    layoutUpdateCallback.call();
+  }, {
+    trackSectionVisibility: true
+  });
+});
+function scrollTo(section, tabBar) {
+  var $header = section.headerRow;
+  var scrollTop = $header.offset().top - (jquery_default()("#main-panel .jenkins-config-widgets").outerHeight() + 15);
+  isScrolling = true;
+  jquery_default()("html,body").animate({
+    scrollTop: scrollTop
+  }, scrollspeed, function () {
+    if (isScrolling) {
+      notify({
+        type: "click_scrollto",
+        section: section
+      });
+      isScrolling = false;
+      ignoreNextScrollEvent = stickTabbar(tabBar);
+    }
+  });
+}
+
+/**
+ * Watch page scrolling, changing the active tab as needed.
+ * @param tabBar The tabbar.
+ */
+function autoActivateTabs(tabBar) {
+  if (isScrolling === true) {
+    // Ignore window scroll events while we are doing a scroll.
+    // See scrollTo function.
+    return;
+  }
+  if (ignoreNextScrollEvent === true) {
+    // Things like repositioning of the tabbar (see stickTabbar)
+    // can trigger scroll events that we want to ignore.
+    ignoreNextScrollEvent = false;
+    return;
+  }
+  var winScrollTop = page.winScrollTop();
+  var sections = tabBar.sections;
+
+  // calculate the top and height of each section to know where to switch the tabs...
+  jquery_default().each(sections, function (i, section) {
+    if (!section.isVisible()) {
+      return;
+    }
+
+    // each section enters the viewport at its distance down the page, less the height of
+    // the toolbar, which hangs down the page. Or it is zero if the section doesn't
+    // match or was removed...
+    var viewportEntryOffset = section.getViewportEntryOffset();
+    // height of this one is the top of the next, less the top of this one.
+    var sectionHeight = 0;
+    var nextSection = nextVisibleSection(section);
+    if (nextSection) {
+      sectionHeight = nextSection.getViewportEntryOffset() - viewportEntryOffset;
+    }
+
+    // the trigger point to change the tab happens when the scroll position passes below the height of the section...
+    // ...but we want to wait to advance the tab until the existing section is 75% off the top...
+    // ### < 75% ADVANCED
+    if (winScrollTop < viewportEntryOffset + 0.75 * sectionHeight) {
+      section.markAsActive();
+      notify({
+        type: "manual_scrollto",
+        section: section
+      });
+      return false;
+    }
+  });
+}
+
+/**
+ * Stick the scrollspy tabbar to the top of the visible area as the user
+ * scrolls down the page.
+ * @param tabBar The tabbar.
+ */
+function stickTabbar(tabBar) {
+  var win = jquery_default()(window_handle.getWindow());
+  var winScrollTop = page.winScrollTop();
+  var widgetBox = tabBar.configWidgets;
+  var configTable = tabBar.configTable;
+  var configForm = tabBar.configForm;
+  var setWidth = function () {
+    widgetBox.width(configForm.outerWidth() - 2);
+  };
+  if (winScrollTop > config_scrollspy_pageHeaderHeight - 5) {
+    setWidth();
+    widgetBox.css({
+      position: "fixed",
+      top: config_scrollspy_breadcrumbBarHeight - 5 + "px",
+      margin: "0 auto !important"
+    });
+    configTable.css({
+      "margin-top": widgetBox.outerHeight() + "px"
+    });
+    win.resize(setWidth);
+    return true;
+  } else {
+    widgetBox.removeAttr("style");
+    configTable.removeAttr("style");
+    win.unbind("resize", setWidth);
+    return false;
+  }
+}
+function nextVisibleSection(section) {
+  var next = section.getSibling(+1);
+  while (next && !next.isVisible()) {
+    next = next.getSibling(+1);
+  }
+  return next;
+}
+
+/***/ }),
+
+/***/ 3045:
+/***/ (function() {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ 2864:
+/***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3093);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2021);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6550);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7888);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(1560);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(951);
+/* harmony import */ var _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _yarn_virtual_mini_css_extract_plugin_virtual_bc5594cf9b_0_cache_mini_css_extract_plugin_npm_2_6_1_4e6d2beaf0_df60840404_zip_node_modules_mini_css_extract_plugin_dist_loader_js_ruleSet_1_rules_0_use_1_yarn_virtual_css_loader_virtual_69d962f175_0_cache_css_loader_npm_6_7_1_b93a2de0d4_170fdbc630_zip_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_yarn_virtual_postcss_loader_virtual_77dab24057_0_cache_postcss_loader_npm_7_0_1_444ecd58b4_2a3cbcaaad_zip_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_3_yarn_virtual_less_loader_virtual_a46b98874a_0_cache_less_loader_npm_11_1_0_b8c881320a_041216e0a6_zip_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_0_use_4_config_scrollspy_less__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(3045);
+/* harmony import */ var _yarn_virtual_mini_css_extract_plugin_virtual_bc5594cf9b_0_cache_mini_css_extract_plugin_npm_2_6_1_4e6d2beaf0_df60840404_zip_node_modules_mini_css_extract_plugin_dist_loader_js_ruleSet_1_rules_0_use_1_yarn_virtual_css_loader_virtual_69d962f175_0_cache_css_loader_npm_6_7_1_b93a2de0d4_170fdbc630_zip_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_yarn_virtual_postcss_loader_virtual_77dab24057_0_cache_postcss_loader_npm_7_0_1_444ecd58b4_2a3cbcaaad_zip_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_3_yarn_virtual_less_loader_virtual_a46b98874a_0_cache_less_loader_npm_11_1_0_b8c881320a_041216e0a6_zip_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_0_use_4_config_scrollspy_less__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_yarn_virtual_mini_css_extract_plugin_virtual_bc5594cf9b_0_cache_mini_css_extract_plugin_npm_2_6_1_4e6d2beaf0_df60840404_zip_node_modules_mini_css_extract_plugin_dist_loader_js_ruleSet_1_rules_0_use_1_yarn_virtual_css_loader_virtual_69d962f175_0_cache_css_loader_npm_6_7_1_b93a2de0d4_170fdbc630_zip_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_yarn_virtual_postcss_loader_virtual_77dab24057_0_cache_postcss_loader_npm_7_0_1_444ecd58b4_2a3cbcaaad_zip_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_3_yarn_virtual_less_loader_virtual_a46b98874a_0_cache_less_loader_npm_11_1_0_b8c881320a_041216e0a6_zip_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_0_use_4_config_scrollspy_less__WEBPACK_IMPORTED_MODULE_6__);
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _yarn_virtual_style_loader_virtual_ed9460aef7_0_cache_style_loader_npm_3_3_1_4bbb6ec77f_470feef680_zip_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()((_yarn_virtual_mini_css_extract_plugin_virtual_bc5594cf9b_0_cache_mini_css_extract_plugin_npm_2_6_1_4e6d2beaf0_df60840404_zip_node_modules_mini_css_extract_plugin_dist_loader_js_ruleSet_1_rules_0_use_1_yarn_virtual_css_loader_virtual_69d962f175_0_cache_css_loader_npm_6_7_1_b93a2de0d4_170fdbc630_zip_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_yarn_virtual_postcss_loader_virtual_77dab24057_0_cache_postcss_loader_npm_7_0_1_444ecd58b4_2a3cbcaaad_zip_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_3_yarn_virtual_less_loader_virtual_a46b98874a_0_cache_less_loader_npm_11_1_0_b8c881320a_041216e0a6_zip_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_0_use_4_config_scrollspy_less__WEBPACK_IMPORTED_MODULE_6___default()), options);
+
+
+
+
+       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((_yarn_virtual_mini_css_extract_plugin_virtual_bc5594cf9b_0_cache_mini_css_extract_plugin_npm_2_6_1_4e6d2beaf0_df60840404_zip_node_modules_mini_css_extract_plugin_dist_loader_js_ruleSet_1_rules_0_use_1_yarn_virtual_css_loader_virtual_69d962f175_0_cache_css_loader_npm_6_7_1_b93a2de0d4_170fdbc630_zip_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_yarn_virtual_postcss_loader_virtual_77dab24057_0_cache_postcss_loader_npm_7_0_1_444ecd58b4_2a3cbcaaad_zip_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_3_yarn_virtual_less_loader_virtual_a46b98874a_0_cache_less_loader_npm_11_1_0_b8c881320a_041216e0a6_zip_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_0_use_4_config_scrollspy_less__WEBPACK_IMPORTED_MODULE_6___default()) && (_yarn_virtual_mini_css_extract_plugin_virtual_bc5594cf9b_0_cache_mini_css_extract_plugin_npm_2_6_1_4e6d2beaf0_df60840404_zip_node_modules_mini_css_extract_plugin_dist_loader_js_ruleSet_1_rules_0_use_1_yarn_virtual_css_loader_virtual_69d962f175_0_cache_css_loader_npm_6_7_1_b93a2de0d4_170fdbc630_zip_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_yarn_virtual_postcss_loader_virtual_77dab24057_0_cache_postcss_loader_npm_7_0_1_444ecd58b4_2a3cbcaaad_zip_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_3_yarn_virtual_less_loader_virtual_a46b98874a_0_cache_less_loader_npm_11_1_0_b8c881320a_041216e0a6_zip_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_0_use_4_config_scrollspy_less__WEBPACK_IMPORTED_MODULE_6___default().locals) ? (_yarn_virtual_mini_css_extract_plugin_virtual_bc5594cf9b_0_cache_mini_css_extract_plugin_npm_2_6_1_4e6d2beaf0_df60840404_zip_node_modules_mini_css_extract_plugin_dist_loader_js_ruleSet_1_rules_0_use_1_yarn_virtual_css_loader_virtual_69d962f175_0_cache_css_loader_npm_6_7_1_b93a2de0d4_170fdbc630_zip_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_2_yarn_virtual_postcss_loader_virtual_77dab24057_0_cache_postcss_loader_npm_7_0_1_444ecd58b4_2a3cbcaaad_zip_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_0_use_3_yarn_virtual_less_loader_virtual_a46b98874a_0_cache_less_loader_npm_11_1_0_b8c881320a_041216e0a6_zip_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_0_use_4_config_scrollspy_less__WEBPACK_IMPORTED_MODULE_6___default().locals) : undefined);
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	!function() {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = function(result, chunkIds, fn, priority) {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var chunkIds = deferred[i][0];
+/******/ 				var fn = deferred[i][1];
+/******/ 				var priority = deferred[i][2];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every(function(key) { return __webpack_require__.O[key](chunkIds[j]); })) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	!function() {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/runtimeId */
+/******/ 	!function() {
+/******/ 		__webpack_require__.j = 814;
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	!function() {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			814: 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = function(chunkId) { return installedChunks[chunkId] === 0; };
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = function(parentChunkLoadingFunction, data) {
+/******/ 			var chunkIds = data[0];
+/******/ 			var moreModules = data[1];
+/******/ 			var runtime = data[2];
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some(function(id) { return installedChunks[id] !== 0; })) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkjenkins_ui"] = self["webpackChunkjenkins_ui"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	!function() {
+/******/ 		__webpack_require__.nc = undefined;
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, [216], function() { return __webpack_require__(2774); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [216], function() { return __webpack_require__(2864); })
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
+//# sourceMappingURL=config-scrollspy.js.map

@@ -1,22 +1,26 @@
 Manifest-Version: 1.0
-Built-By: Srinivas
-Created-By: Apache Maven
-Build-Jdk: 1.8.0_221
-Extension-Name: simplify-qa-connector
-Specification-Title: The Jenkins Plugins Parent POM Project
-Implementation-Title: simplify-qa-connector
-Implementation-Version: 1.0-SNAPSHOT
+Created-By: Maven Archiver 3.6.0
+Build-Jdk-Spec: 21
+Specification-Title: SimplifyQA Pipeline Executor
+Specification-Version: 2.0
+Implementation-Title: SimplifyQA Pipeline Executor
+Implementation-Version: 2.0-SNAPSHOT
 Group-Id: io.jenkins.plugins
+Artifact-Id: simplify-qa-connector
 Short-Name: simplify-qa-connector
-Long-Name: TODO Plugin
+Long-Name: SimplifyQA Pipeline Executor
 Url: https://github.com/jenkinsci/simplify-qa-connector-plugin
-Minimum-Java-Version: 1.8
-Plugin-Version: 1.0-SNAPSHOT (private-02/05/2021 19:02-Srinivas)
-Hudson-Version: 2.235.1
-Jenkins-Version: 2.235.1
+Plugin-Version: 2.0-SNAPSHOT (private-ccfb8b04-SYSTEM)
+Hudson-Version: 2.375.1
+Jenkins-Version: 2.375.1
+Plugin-Dependencies: structs:324.va_f5d6774f3a_d
 Plugin-Developers: 
-Support-Dynamic-Loading: true
 Plugin-License-Name: MIT License
-Plugin-License-Url: https://opensource.org/licenses/MIT
+Plugin-License-Url: https://opensource.org/license/mit/
+Plugin-ScmConnection: scm:git:https://github.com/jenkinsci/simplify-qa-c
+ onnector-plugin
+Plugin-ScmTag: HEAD
 Plugin-ScmUrl: https://github.com/jenkinsci/simplify-qa-connector-plugin
+Plugin-GitHash: ccfb8b048d68ac5f36189ad8d1ab507e74a70ab3
+Implementation-Build: ccfb8b048d68ac5f36189ad8d1ab507e74a70ab3
 
