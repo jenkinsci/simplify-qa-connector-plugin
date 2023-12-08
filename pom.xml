@@ -1,68 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-<<<<<<< HEAD
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.jenkins-ci.plugins</groupId>
-		<artifactId>plugin</artifactId>
-		<version>4.12</version>
-		<relativePath />
-	</parent>
-	<groupId>io.jenkins.plugins</groupId>
-	<artifactId>simplify-qa-connector</artifactId>
-	<version>${revision}${changelist}</version>
-	<packaging>hpi</packaging>
-	<properties>
-		<revision>1.0.6</revision>
-		<changelist>-SNAPSHOT</changelist>
-		<jenkins.version>2.235.1</jenkins.version>
-		<java.level>8</java.level>
-		<gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
-	</properties>
-	<name>SimplifyQA Connector</name>
-	<description>
-	SimplifyQA Jenkins Connector is a Plugin to trigger automation of suites in SimplifyQA after build.
-	</description>
-	<url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.jenkins.tools.bom</groupId>
-				<artifactId>bom-2.235.x</artifactId>
-				<version>16</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<licenses>
-		<license>
-			<name>MIT License</name>
-			<url>https://opensource.org/licenses/MIT</url>
-		</license>
-	</licenses>
-
-	<scm>
-		<connection>scm:git:git://github.com/${gitHubRepo}.git</connection>
-		<developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
-		<url>https://github.com/${gitHubRepo}</url>
-		<tag>simplifyqaconnector-1.0.5-release</tag>
-	</scm>
-
-	<repositories>
-		<repository>
-			<id>repo.jenkins-ci.org</id>
-			<url>https://repo.jenkins-ci.org/public/</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>repo.jenkins-ci.org</id>
-			<url>https://repo.jenkins-ci.org/public/</url>
-		</pluginRepository>
-	</pluginRepositories>
-=======
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
@@ -172,5 +109,4 @@
       <url>https://repo.jenkins-ci.org/public/</url>
     </pluginRepository>
   </pluginRepositories>
->>>>>>> d19f963 (Update version 2.0.0-SNAPSHOT)
 </project>
