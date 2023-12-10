@@ -1,5 +1,4 @@
 <?jelly escape-by-default='true'?>
 <div>
-    TODO
     SimplifyQA Pipeline Executor is a plugin which is meant to be used with the pipelines module of SimplifyQA.
 </div>
