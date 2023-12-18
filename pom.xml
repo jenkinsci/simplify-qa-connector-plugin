@@ -34,6 +34,7 @@
     <hpi.compatibleSinceVersion>1.0</hpi.compatibleSinceVersion>
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     <spotless.check.skip>false</spotless.check.skip>
+    <changelist>999999-SNAPSHOT</changelist>
   </properties>
   <dependencyManagement>
     <dependencies>
