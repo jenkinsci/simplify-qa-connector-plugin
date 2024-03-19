@@ -1,0 +1,37 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    
+    <f:icon size="48x48" file="document.png"/>
+
+    <f:section title="Set the parameters for the execution below:">
+        
+        <f:entry title="${%field1}" field="exec_token" description="${%ExecTokenDesc}">
+            <f:password>
+            	<f:validateRegex pattern=".{{88,88}}" error="Execution Token should be 88 characters long."/>
+            </f:password>
+        </f:entry>
+
+        <f:entry title="${%field2}" field="app_url" description="${%AppUrlDesc}">
+            <f:textbox>
+                <f:default value="https://simplifyqa.app"/>
+            </f:textbox>
+        </f:entry>
+
+        <f:advanced>
+
+            <f:entry title="${%field3}" field="threshold" description="${%ThresholdDesc}">
+                <f:number min="0.00" max="100.00">
+                    <f:default value="100.00"/>
+                    <f:validateRegex pattern=".{{1,3}}" error="Threshold percentage ranges between 0.00% and 100.00%."/>
+                </f:number>
+            </f:entry>
+
+            <f:entry title="${%field4}" field="verbose" description="${%VerboseDesc}">
+                <f:checkbox />
+            </f:entry>
+
+        </f:advanced>
+    
+    </f:section>
+
+</j:jelly>
