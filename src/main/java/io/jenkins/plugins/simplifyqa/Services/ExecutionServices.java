@@ -94,20 +94,11 @@ public class ExecutionServices {
     public boolean startExec() {
         boolean ret_flag = false;
         HttpResponse<String> response = null;
-        int failsafe_counter = 60; // The failsafe counter is used to ensure the app to waits until the
+        // int failsafe_counter = 60; // The failsafe counter is used to ensure the app to waits until the
         // execution is properly started or response is properly determined
         TriggerPayload payload = new TriggerPayload(this.exec_obj.getExec_token());
         try {
             response = ExecutionServices.getResponse(exec_obj.getBuildApi(), "POST", payload.getPayload());
-
-            while (!(Boolean.valueOf(((JSONObject) new JSONParser().parse(response.body()))
-                            .get("success")
-                            .toString()))
-                    && (failsafe_counter > 0)) {
-                response = ExecutionServices.getResponse(exec_obj.getBuildApi(), "POST", payload.getPayload());
-                Thread.sleep(5000);
-                failsafe_counter--;
-            }
 
             switch (response.statusCode()) {
                 case 200:
